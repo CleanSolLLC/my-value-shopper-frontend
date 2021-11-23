@@ -1,4 +1,6 @@
 import React from "react";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 class App extends React.Component {
 
@@ -14,7 +16,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        App
+         <h3>Build Sign Up & Login UI Template in React</h3>
       </div>
   )
  }
