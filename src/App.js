@@ -5,13 +5,13 @@ import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 
 //used React sign in and sign up template from https://www.positronx.io/build-react-login-sign-up-ui-template-with-bootstrap-4/
- 
+
 function App() {
   return (<Router>
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
         <div className="container">
-          <Link className="navbar-brand" to={"/sign-in"}>positronX.io</Link>
+          {/* <Link className="navbar-brand" to={"/sign-in"}>positronX.io</Link> */}
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
