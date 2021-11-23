@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 
+//used React sign in and sign up template from https://www.positronx.io/build-react-login-sign-up-ui-template-with-bootstrap-4/
+ 
 function App() {
   return (<Router>
     <div className="App">
