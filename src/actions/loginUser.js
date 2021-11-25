@@ -1,18 +1,25 @@
-import { LOGIN_USER } from './types';
+export const setCurrentUser = user =>  {
+  return {
+    type: "SET_CURRENT_USER",
+    user
+  }
+}
 
-export const loginUser = (userData) => dispatch => {
-    fetch('http://localhost:3001/api/v1/sessions', {
+export const loginUser = (formData) => dispatch => {
+    fetch('http://localhost:3001/api/v1/sessions/login ', {
       method: 'POST',
       headers:{
        'Content-type': 'application/json'
       },
-      body: JSON.stringify(userData)
+      body: JSON.stringify(formData)
     })
     .then(resp => resp.json())
-    .then(user => dispatch(
-      {
-        type: LOGIN_USER,
-        payload: user
-
-      }))
-};
+    .then(user => {
+      if (user.error) {
+        alert(user.error)
+      } else {
+      dispatch(setCurrentUser(user)) 
+      }
+    })
+    .catch(console.log)
+  };

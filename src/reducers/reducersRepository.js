@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import userReducer from './userReducer';
+import currentUser from './currentUser';
 //continue to add pointers to reducers here
 
 export default combineReducers({
-  user: userReducer
+  currentUser
 });
