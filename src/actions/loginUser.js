@@ -6,9 +6,8 @@ export const setCurrentUser = user =>  {
 }
 
 export const getCurrentUser = user =>  {
-  console.log("GET CURRENT USER")
   return {
-    type: "GET_CURRENT_USER",
+    type: 'GET_CURRENT_USER',
     user
   }
 }

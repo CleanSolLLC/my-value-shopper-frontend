@@ -1,12 +1,11 @@
-import React from "react";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
+import Logout from "./components/logout.component";
 
 //used React sign in and sign up template from https://www.positronx.io/build-react-login-sign-up-ui-template-with-bootstrap-4/
 
-function Main() {
+function Navigation() {
   return (<Router>
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
@@ -20,6 +19,9 @@ function Main() {
               <li className="nav-item">
                 <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/log-out"}>Log out</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -31,6 +33,7 @@ function Main() {
             <Route exact path='/' component={Login} />
             <Route path="/sign-in" component={Login} />
             <Route path="/sign-up" component={SignUp} />
+            <Route path="/log-out" component={Logout} />
           </Switch>
         </div>
       </div>
@@ -38,25 +41,4 @@ function Main() {
   );
 }
 
-export default Main;
-
-  //componentDidMount() {
-    // fetch("http://localhost:3001/api/v1/categories/1/items/3", {
-    //   method: "GET",
-    // }) 
-    //   .then(response => response.json())
-    //   .then(data => console.log(data))
-
-   // }
-
-//   render() {
-//     return (
-//       <div className="App">
-//          <h3>Build Sign Up & Login UI Template in React</h3>
-//       </div>
-//   )
-//  }
-
-// }
-
-// export default App;
+export default Navigation;

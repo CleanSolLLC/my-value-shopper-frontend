@@ -1,7 +1,7 @@
 import React, { Component }from "react";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
-import Main from './Main'
+import Navigation from './Navigation'
 import { getUser } from './actions/loginUser';
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
   }
    render() {
      return (
-       <Main />  
+       <Navigation />  
      )  
    }  
 }
