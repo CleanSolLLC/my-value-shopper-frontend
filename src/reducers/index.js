@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
 import user from './user';
-//continue to add pointers to reducers here
+import isloggedin from './isloggedin';
+
 
 export default combineReducers({
-  user
-  //currentUser
+  user: user,
+  loggedin: isloggedin
 });
