@@ -12,7 +12,12 @@ export default function currentUser(state = null, action) {
       }
 
     case "DELETE_CURRENT_USER":
-      return null   
+      return null  
+      
+    case "CREATE_NEW_USER":
+      return {
+        user: action.user
+      }
 
      default:
        return state;     

@@ -34,7 +34,7 @@ export const loginUser = (formData) => dispatch => {
 
   export const getUser = () => dispatch => {
     return fetch('http://localhost:3001/api/v1/sessions/get_current_user ', {
-    credentials: 'include',  
+    //credentials: 'include',  
     method: 'GET',
       headers:{
        'Content-type': 'application/json'
