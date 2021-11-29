@@ -1,51 +1,51 @@
-export const setCurrentUser = user =>  {
+export const getCurrentUser = (data) =>  {
   return {
-    type: "SET_CURRENT_USER",
-    user
+    type: 'GET_USER',
+    payload: data.user
   }
 }
 
-export const getCurrentUser = user =>  {
+export const isLoggedin = () =>  {
   return {
-    type: 'GET_CURRENT_USER',
-    user
+    type: 'SIGN_IN'
   }
 }
 
-export const loginUser = (formData) => dispatch => {
-    fetch('http://localhost:3001/api/v1/sessions/login ', {
-      credentials: 'include',
+export const getUser = () => dispatch => {
+  const token = localStorage.getItem("jwt");  
+  fetch("http://localhost:3001/api/v1/profile", {
+    //credentials: 'include',
+    method: "GET",
+    headers: {
+    Authorization: `Bearer ${token}`,
+    },
+  })
+  .then(resp => resp.json())
+  .then(data => {
+    dispatch(getCurrentUser(data))
+    console.log(data)
+  })
+}
+
+  export const loginUser = (formData) => dispatch => {
+    fetch('http://localhost:3001/api/v1/login', {
+      //credentials: 'include',
       method: 'POST',
       headers:{
-       'Content-type': 'application/json'
+       'Content-type': 'application/json',
+       "Accept": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({user: formData})
     })
     .then(resp => resp.json())
-    .then(user => {
-      if (user.error) {
-        alert(user.error)
+    .then(data => {
+      if (data.error) {
+        alert(data.error)
       } else {
-      dispatch(setCurrentUser(user)) 
-      }
-    })
-    .catch(console.log)
-  };
+      localStorage.setItem('jwt', data.jwt)
+      dispatch(isLoggedin())
+      dispatch(getCurrentUser(data)) 
 
-  export const getUser = () => dispatch => {
-    return fetch('http://localhost:3001/api/v1/sessions/get_current_user ', {
-    //credentials: 'include',  
-    method: 'GET',
-      headers:{
-       'Content-type': 'application/json'
-      },
-    })
-    .then(resp => resp.json())
-    .then(user => {
-      if (user.error) {
-        alert(user.error)
-      } else {
-      dispatch(getCurrentUser(user)) 
       }
     })
     .catch(console.log)

@@ -1,20 +1,21 @@
-export const logout = () => {
+export const logoutUser = () => {
  return {
-   type: 'DELETE_CURRENT_USER'
+   type: 'LOGOUT_USER'
  } 
 }
 
-
-
-export const sessionLogout = () => {
-  return(dispatch) => {
-     dispatch(logout())
+// export const sessionLogout = () => dispatch {
+//   debugger
+//   dispatch(logout())
+//   localStorage.clear();
+// }
   
-  return fetch('http://localhost:3001/api/v1/logout',{
-    credentials: 'include',  
-    method: 'DELETE',
-    })
-}
+//**************** Do we need to logout on the server ****************************     
+//   return fetch('http://localhost:3001/api/v1/logout',{
+//     //credentials: 'include',  
+//     method: 'DELETE',
+//     })
+// }
     // .then(resp => resp.json())
     // .then(data => {
     //    if(data["session"] === {}) {
@@ -22,4 +23,3 @@ export const sessionLogout = () => {
     //      console.log(data)
     //    }   
     // })
-}

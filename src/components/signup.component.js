@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { newUser } from '../actions/signup';
+//import { getUser } from '../actions/login';
 import { connect } from 'react-redux';
+//import {useSelector, useDispatch } from 'react-redux';
+
 
 class SignUp extends Component {
 
@@ -16,8 +19,8 @@ class SignUp extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.newUser(this.state)
-
+        this.props.newUser(this.state);
+        //getUser();
       }
     render() {
         return (

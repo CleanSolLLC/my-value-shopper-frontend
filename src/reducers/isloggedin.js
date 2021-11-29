@@ -1,10 +1,13 @@
-const sessionReducer = (state = false, action) => {
+const loggedinReducer = (state = false, action) => {
+  
   switch(action.type) {
     case "SIGN_IN":
-      return !state;
-    
+      return { 
+        loggedin: !state
+      }
+
     default:
        return state;       
   }    
 }
-export default sessionReducer;
+export default loggedinReducer;

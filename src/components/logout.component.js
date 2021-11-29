@@ -1,17 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { sessionLogout } from '../actions/logout';
+import { logoutUser } from '../actions/logout';
+import { useDispatch } from 'react-redux'
 
-class Logout extends Component {
+export const Logout = () => {
+  const dispatch = useDispatch();
+  dispatch(logoutUser());
+  localStorage.clear();
 
-    componentDidMount() {
-       this.props.sessionLogout()
-    }
-      
-    render() {
-      return(
-          <div></div>
-      )  
-    }
+  return "Logged Out Successfully";
 }
-export default connect(null, {sessionLogout})(Logout);

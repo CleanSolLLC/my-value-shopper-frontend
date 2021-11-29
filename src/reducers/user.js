@@ -3,16 +3,15 @@ const userReducer = (state = null, action) => {
     case "CREATE_USER":
       return {
         user: action.payload,
-        jwt:  localStorage.getItem('jwt')
       }
-    case "LOGIN_USER":
+    case "GET_USER":
       return {
-        //user: action.user
+        user: action.payload
       }
         
     case "LOGOUT_USER":
       return {
-        //user: action.user
+        user: null
       }
 
     default:
