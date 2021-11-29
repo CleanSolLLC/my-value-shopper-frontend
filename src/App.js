@@ -1,17 +1,24 @@
 import React, { Component }from "react";
-//import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import Navigation from './Navigation'
-//import { getUser } from './actions/loginUser';
+import { getUser } from './actions/login';
 
 class App extends Component {
-  // componentDidMount() {
-  //   this.props.getUser()
-  // }
+
+  componentDidMount() {
+    if (localStorage.getItem('jwt') !== null) {
+      this.props.getUser();
+    }
+  }
    render() {
      return (
        <Navigation />  
      )  
    }  
 }
-export default App;
-//export default connect(null, {getUser})(App);
+const mapStateToProps = (state) => {
+  return {
+    loggedin: state.loggedin
+  }
+}
+export default connect(mapStateToProps, {getUser})(App);
