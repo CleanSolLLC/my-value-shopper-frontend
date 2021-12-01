@@ -5,12 +5,6 @@ export const createUser = (data) =>  {
   }
 }
 
-export const isLoggedin = () =>  {
-  return {
-    type: 'SIGN_IN',
-  }
-}
-
 export const newUser = (formData) => dispatch => {
     fetch('http://localhost:3001/api/v1/users', {
       //credentials: 'include',
@@ -26,7 +20,6 @@ export const newUser = (formData) => dispatch => {
       // save the token to localStorage for future access
       localStorage.setItem('jwt', data.jwt)
       dispatch(createUser(data))
-      dispatch(isLoggedin())
       // save the user somewhere (in state!) to log the user in
 
     })

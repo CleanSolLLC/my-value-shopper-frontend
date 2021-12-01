@@ -5,12 +5,6 @@ export const getCurrentUser = (data) =>  {
   }
 }
 
-export const isLoggedin = () =>  {
-  return {
-    type: 'SIGN_IN'
-  }
-}
-
 export const getUser = () => dispatch => {
   const token = localStorage.getItem("jwt");  
   fetch("http://localhost:3001/api/v1/profile", {
@@ -43,7 +37,6 @@ export const getUser = () => dispatch => {
         alert(data.error)
       } else {
       localStorage.setItem('jwt', data.jwt)
-      dispatch(isLoggedin())
       dispatch(getCurrentUser(data)) 
 
       }
