@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { loginUser } from '../actions/login'
+import { loginUser } from '../actions/login';
+import { Redirect } from 'react-router';
+import Items  from './items.component';
 
 
 class Login extends Component {
+
+  state = {
+    redirect: false
+  }
 
     handleChange = (event) => {
         const target = event.target;
@@ -19,11 +25,20 @@ class Login extends Component {
         event.preventDefault();
         this.props.loginUser(this.state)
 
+        this.setState({
+          redirect: true,
+        })
       }
 
 
 
     render() {
+      const { redirect } = this.state;
+      if (redirect) {
+        return <Redirect to='/items'/>;
+      }
+      < Items />;
+
         return (
             <form onSubmit = {this.handleSubmit}>
                 <h3>Sign In</h3>
@@ -45,6 +60,8 @@ class Login extends Component {
 
             </form>
         );
+
+
     }
 }
 const mapStateToProps = state => {

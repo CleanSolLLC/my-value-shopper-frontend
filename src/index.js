@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from "react-router-dom";
+import Navigation from './navigation'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 import App from './App';
@@ -13,6 +14,7 @@ ReactDOM.render(
   <Router>
     <Provider store = {store}>
       <App /> 
+      <Navigation />
     </Provider>
   </Router>,
 
