@@ -6,13 +6,19 @@ const userReducer = (state = null, action) => {
       }
     case "GET_USER":
       return {
-        user: action.payload
+        user: action.payload,
+        loggedin: true
       }
         
     case "LOGOUT_USER":
       return {
-        user: null
+        user: null,
+        loggedin: false
       }
+    // case "LOGGED_IN":
+    //   return {
+    //     loggedin: true
+    //   }
 
     default:
       return state; 

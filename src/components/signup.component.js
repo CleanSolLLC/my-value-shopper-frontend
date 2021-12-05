@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 //import {useSelector, useDispatch } from 'react-redux';
 
 
-class SignUp extends Component {
+export class SignUp extends Component {
 
     handleChange = (event) => {
         const target = event.target;

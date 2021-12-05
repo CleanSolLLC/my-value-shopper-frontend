@@ -1,3 +1,5 @@
+import loggedIn from './setlogin';
+
 export const getCurrentUser = (data) =>  {
   return {
     type: 'GET_USER',
@@ -16,6 +18,7 @@ export const getUser = () => dispatch => {
   })
   .then(resp => resp.json())
   .then(data => {
+    dispatch(loggedIn())
     dispatch(getCurrentUser(data))
     console.log(data)
   })
