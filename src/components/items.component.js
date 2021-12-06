@@ -16,7 +16,7 @@ class Items extends Component {
         )}
 }      
 const mapStateToProps = (state) => {
-  //console.log(state.user.user.items)
+  console.log(state.user.user.items)
   return {
     items: state.user.user.items
   }
