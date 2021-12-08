@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import { getUserItems } from '../actions/items'
 
 
 class Items extends Component {
+
+  componentDidMount() {
+     this.props.getUserItems();
+  }
 
     render() {
         return (
@@ -16,10 +21,10 @@ class Items extends Component {
         )}
 }      
 const mapStateToProps = (state) => {
-  console.log(state.user.user.items)
+  console.log(state)
   return {
-    items: state.user.user.items
+    items: (state.user)
   }
 }
 
-export default connect(mapStateToProps)(Items);
+export default connect(mapStateToProps, getUserItems)(Items);

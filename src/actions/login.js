@@ -1,4 +1,4 @@
-import loggedIn from './setlogin';
+//import loggedIn from './setlogin';
 
 export const getCurrentUser = (data) =>  {
   return {
@@ -10,7 +10,7 @@ export const getCurrentUser = (data) =>  {
 export const getUser = () => dispatch => {
   const token = localStorage.getItem("jwt");  
   fetch("http://localhost:3001/api/v1/profile", {
-    //credentials: 'include',
+
     method: "GET",
     headers: {
     Authorization: `Bearer ${token}`,
@@ -18,15 +18,13 @@ export const getUser = () => dispatch => {
   })
   .then(resp => resp.json())
   .then(data => {
-    dispatch(loggedIn())
     dispatch(getCurrentUser(data))
-    console.log(data)
   })
 }
 
   export const loginUser = (formData) => dispatch => {
     fetch('http://localhost:3001/api/v1/login', {
-      //credentials: 'include',
+  
       method: 'POST',
       headers:{
        'Content-type': 'application/json',

@@ -1,6 +1,7 @@
 import React, { Component }from "react";
 import { connect } from 'react-redux';
 import { getUser } from './actions/login';
+import  auth  from './auth'
 //import { SignUp } from './components/signup.component';
 //import { Redirect } from 'react-router';
 //import Items  from './components/items.component';
@@ -9,20 +10,19 @@ import { getUser } from './actions/login';
 class App extends Component {
 
   componentDidMount() {
-    if (localStorage.getItem('jwt') !== null) {
+    if (auth.isAuthenticated()) {
       this.props.getUser();
-
     }}
 
-   render() {
+    render() {
       return (
         <div></div>
       )
-   }  
-}
+    }
+  }
 const mapStateToProps = (state) => {
   return {
-    loggedin: state.loggedin
+    //loggedin: state.loggedin
   }
 }
 export default connect(mapStateToProps, {getUser})(App);
