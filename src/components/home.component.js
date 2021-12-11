@@ -1,16 +1,15 @@
-import React, { Component } from "react";
-//import { connect } from 'react-redux';
-//import { loginUser } from '../actions/login'
+//import React from 'react';
+import auth from '../auth';
+//import Items from './items.component';
+//import Login from './items.component';
 
 
-class Home extends Component {
+export const Home = (props) => {
 
-    render() {
-        return (
-          <div><h1>Home</h1></div>  
-        );
-    }
+  if (auth.login()) { 
+    props.history.push('/items')
+  }else {
+    props.history.push('/sign-in') 
+  }
+  return null
 }
-
-
-export default Home;

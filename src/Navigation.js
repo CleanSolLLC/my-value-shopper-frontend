@@ -2,10 +2,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./components/login.component";
 import  SignUp  from "./components/signup.component";
 import  { Logout }  from "./components/logout.component";
-import Home from "./components/home.component";
+import { Home } from "./components/home.component";
 import ItemsByCategory from "./components/itemsbycategory.component";
 import Items from "./components/items.component";
-import { connect } from 'react-redux';
 
 //import App from './App';
 
@@ -59,11 +58,4 @@ function Navigation() {
   );
 }
 
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    loggedin: state.loggedin
-  }
-}
-
-export default connect(mapStateToProps)(Navigation);
+export default Navigation;

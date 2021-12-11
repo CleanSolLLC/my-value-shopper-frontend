@@ -9,10 +9,14 @@ class Auth {
  }
 
    
-   login(cb) {
-      this.authenticated = true; 
-      cb();
+   login() {
+     if (this.isAuthenticated()) { 
+       return this.authenticated = true
+     } else {
+       return this.authenticated
+     }
    }
+
 
    logout(cb) {
       this.authenticated = false;

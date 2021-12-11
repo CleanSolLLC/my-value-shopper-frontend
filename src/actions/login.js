@@ -1,8 +1,8 @@
-//import loggedIn from './setlogin';
+//import { getUserItems } from './items';
 
-export const getCurrentUser = (data) =>  {
+export const getCurrentUser = (data=null) =>  {
   return {
-    type: 'GET_USER',
+    type: 'GET_CURRENT_USER',
     payload: data.user
   }
 }
@@ -39,6 +39,7 @@ export const getUser = () => dispatch => {
       } else {
       localStorage.setItem('jwt', data.jwt)
       dispatch(getCurrentUser(data)) 
+
 
       }
     })
