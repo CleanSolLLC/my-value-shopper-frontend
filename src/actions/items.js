@@ -1,7 +1,7 @@
 export const setUserItems = (data) =>  {
     console.log(data)
     return {
-      type: 'SET_USER_ITEMS',
+      type: 'SET_ITEMS',
       payload: data
     }
   }

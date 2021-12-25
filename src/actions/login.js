@@ -7,6 +7,16 @@ export const getCurrentUser = (data=null) =>  {
   }
 }
 
+export const setItems = (items=null) =>  {
+  debugger
+  return {
+    type: 'SET_ITEMS',
+    payload: items
+  }
+}
+
+
+
 export const getUser = () => dispatch => {
   const token = localStorage.getItem("jwt");  
   fetch("http://localhost:3001/api/v1/profile", {
@@ -38,7 +48,8 @@ export const getUser = () => dispatch => {
         alert(data.error)
       } else {
       localStorage.setItem('jwt', data.jwt)
-      dispatch(getCurrentUser(data)) 
+      dispatch(getCurrentUser(data))
+      dispatch(setItems(data.user.items))
 
 
       }

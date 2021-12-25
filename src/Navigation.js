@@ -6,6 +6,7 @@ import { Home } from "./components/home.component";
 import ItemsByCategory from "./components/itemsbycategory.component";
 import Items from "./components/items.component";
 
+
 //import App from './App';
 
 //used React sign in and sign up template from https://www.positronx.io/build-react-login-sign-up-ui-template-with-bootstrap-4/
