@@ -5,3 +5,22 @@
   background-position: center;
   background-size: cover; 
 }
+
+.landingbutton {
+  width: 200px;
+  height: 55px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .landingbutton {
+    width: 85px;
+    height: 55px;
+  }
+}
+
+/* @media only screen and (min-width: 800px) {
+  .landingbutton {
+    width: 200px;
+    height: 55px;
+  }
+} */

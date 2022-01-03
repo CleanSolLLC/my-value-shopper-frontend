@@ -1,10 +1,11 @@
-import React from 'react';
-import { FormControl, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import React from "react";
+import "./Header.css"
+import { FormControl, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 const Header = () => {
   return (
-    <Navbar bg="primary" expand="lg" variant="dark">
-  <Container>
+    <Navbar className="banner" bg="primary" expand="lg" variant="dark">
+  <Container >
     <Navbar.Brand href="#home">My Value Shopper Powered by Amazing Shopper&copy; </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

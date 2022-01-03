@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/login';
 import { Redirect } from 'react-router';
-import Items  from './items.component';
+import Items  from './Items/Items';
+import '../index.css';
+import '../bootstrap.min.css';
 
 class Login extends Component {
 
@@ -40,7 +42,8 @@ class Login extends Component {
       < Items />;
 
         return (
-            <form onSubmit = {this.handleSubmit}>
+          <div className="auth-wrapper" style={{background: "#8bafdf"}}>
+            <form className="auth-inner" onSubmit = {this.handleSubmit}>
                 <h3>Sign In</h3>
 
                 <div className="form-group">
@@ -59,6 +62,7 @@ class Login extends Component {
                 <button type="submit" className="btn btn-primary btn-block">Submit</button>
 
             </form>
+            </div>
         );
 
 

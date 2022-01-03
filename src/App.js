@@ -6,9 +6,13 @@ import  auth  from './auth'
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import LandingPage from "./components/Views/LandingPage/LandingPage";
-//import { SignUp } from './components/signup.component';
+import { Route} from "react-router-dom";
+import { SignUp } from './components/Signup';
+import Login  from './components/Login';
+import Logout  from './components/Logout';
+//import './index.css';
 //import { Redirect } from 'react-router';
-//import Items  from './components/items.component';
+import Items  from './components/Items/Items';
 //import { setLoggedIn } from '../actions/setlogin';
 
 class App extends Component {
@@ -23,7 +27,11 @@ class App extends Component {
       return (
         <>
         <Header />
-        <LandingPage />
+        <Route path="/" component={LandingPage} exact />
+        <Route exact path="/items" component={Items} />
+        <Route exact path="/log-in" component={Login} />
+        <Route exact path="/sign-up" component={SignUp} />
+        <Route exact path="/log-out" component={Logout} />
         <Footer />
         </>
       )

@@ -24,7 +24,8 @@ export class SignUp extends Component {
       }
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+          <div className="auth-wrapper" style={{background: "#8bafdf"}}>
+            <form className="auth-inner" onSubmit={this.handleSubmit}>
                 <h3>Sign Up</h3>
 
                 <div className="form-group">
@@ -49,6 +50,7 @@ export class SignUp extends Component {
                 <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
 
             </form>
+            </div>
         );
     }
 }

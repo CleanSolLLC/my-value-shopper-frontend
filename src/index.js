@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router} from "react-router-dom";
 //import Navigation from './navigation'
 //import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './bootstrap.min.css';
-import './index.css'
+//import './index.css'
 import App from './App';
 import store from './store';
 
