@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { loginUser } from '../actions/login';
+import { loginUser } from '../../actions/login';
 import { Redirect } from 'react-router';
-import Items  from './Items/Items';
-import '../index.css';
-import '../bootstrap.min.css';
+import Items  from '../Items/Items';
+import '../../index.css';
+import '../../bootstrap.min.css';
 
 class Login extends Component {
 

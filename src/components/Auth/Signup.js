@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { newUser } from '../actions/signup';
+import { newUser } from '../../actions/signup';
 //import { getUser } from '../actions/login';
 import { connect } from 'react-redux';
 //import {useSelector, useDispatch } from 'react-redux';

@@ -5,11 +5,11 @@ import { getUserItems } from './actions/items';
 import  auth  from './auth'
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import LandingPage from "./components/Views/LandingPage/LandingPage";
+import LandingPage from "./components/UX/LandingPage/LandingPage";
 import { Route} from "react-router-dom";
-import { SignUp } from './components/Signup';
-import Login  from './components/Login';
-import Logout  from './components/Logout';
+import SignUp from './components/Auth/Signup';
+import Login  from './components/Auth/Login';
+import Logout  from './components/Auth/Logout';
 //import './index.css';
 //import { Redirect } from 'react-router';
 import Items  from './components/Items/Items';

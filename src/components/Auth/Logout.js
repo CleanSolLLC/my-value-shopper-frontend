@@ -1,4 +1,4 @@
-import { logoutUser } from '../actions/logout';
+import { logoutUser } from '../../actions/logout';
 import { useDispatch } from 'react-redux'
 
 const Logout = () => {
