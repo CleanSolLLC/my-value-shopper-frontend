@@ -7,7 +7,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import LandingPage from "./components/UX/LandingPage/LandingPage";
 import { Route} from "react-router-dom";
-import SignUp from './components/Auth/Signup';
+import { SignUp } from './components/Auth/Signup';
 import Login  from './components/Auth/Login';
 import Logout  from './components/Auth/Logout';
 //import './index.css';
@@ -21,6 +21,8 @@ class App extends Component {
     if (auth.isAuthenticated()) {
       this.props.getUser();
       this.props.getUserItems();
+      //<Redirect to = '/items' />
+
     }}
 
     render() {
