@@ -13,7 +13,7 @@ const LandingPage = () => {
        <Container>
          <Header />
           <Row className="main">
-            <Logo style={{width: "600px", height: "600 px", padding: 0 }} />
+            <Logo style={{width: "650px", height: "650px", padding: 0 }} />
             <div className="mb-2">
               <Row>
                 <Link to={"/log-in"}>

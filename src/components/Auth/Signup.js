@@ -4,6 +4,7 @@ import { Redirect } from 'react-router';
 import Items  from '../Items/Items';
 //import { getUser } from '../actions/login';
 import { connect } from 'react-redux';
+import { Container } from "react-bootstrap";
 //import {useSelector, useDispatch } from 'react-redux';
 
 
@@ -25,12 +26,12 @@ class SignUp extends Component {
         //getUser();
       }
     render() {
-      console.log(this.state)
-      const { redirect } = this.state;
-      if (redirect) {
-        return <Redirect to='/items'/>;
-      }
-      < Items />;
+      // console.log(this.state)
+      // const { redirect } = this.state;
+      // if (redirect) {
+      //   return <Redirect to='/items'/>;
+      // }
+      // < Items />;
         return (
           <div className="auth-wrapper" style={{background: "#8bafdf"}}>
             <form className="auth-inner" onSubmit={this.handleSubmit}>
@@ -56,7 +57,6 @@ class SignUp extends Component {
                 <br></br>
 
                 <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
-
             </form>
             </div>
         );
