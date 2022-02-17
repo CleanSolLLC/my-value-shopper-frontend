@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { newUser } from '../../actions/signup';
+import { Redirect } from 'react-router';
+import Items  from '../Items/Items';
 //import { getUser } from '../actions/login';
 import { connect } from 'react-redux';
 //import {useSelector, useDispatch } from 'react-redux';
 
 
-export class SignUp extends Component {
+class SignUp extends Component {
 
     handleChange = (event) => {
         const target = event.target;
@@ -23,6 +25,12 @@ export class SignUp extends Component {
         //getUser();
       }
     render() {
+      console.log(this.state)
+      const { redirect } = this.state;
+      if (redirect) {
+        return <Redirect to='/items'/>;
+      }
+      < Items />;
         return (
           <div className="auth-wrapper" style={{background: "#8bafdf"}}>
             <form className="auth-inner" onSubmit={this.handleSubmit}>

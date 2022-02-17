@@ -18,7 +18,6 @@ export const getUserItems = () => dispatch => {
     .then(resp => resp.json())
     .then(data => {
      dispatch(setUserItems(data))
-      console.log(data)
     })
 
     .catch(console.log)

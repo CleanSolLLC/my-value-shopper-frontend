@@ -34,12 +34,12 @@ class Login extends Component {
 
 
     render() {
-      console.log(this.state)
-      const { redirect } = this.state;
-      if (redirect) {
-        return <Redirect to='/items'/>;
-      }
-      < Items />;
+      // console.log(this.state)
+      // const { redirect } = this.state;
+      // if (redirect) {
+      //   return <Redirect to='/items'/>;
+      // }
+      // < Items />;
 
         return (
           <div className="auth-wrapper" style={{background: "#8bafdf"}}>

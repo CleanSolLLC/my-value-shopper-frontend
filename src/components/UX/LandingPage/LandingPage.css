@@ -1,5 +1,4 @@
 .main {
-  min-height: "93vh";
   display: flex;
   align-items: center;
   background-position: center;
@@ -11,6 +10,8 @@
   height: 55px;
 }
 
+/* d-none d-lg-block */
+
 @media only screen and (max-width: 1200px) {
   .landingbutton {
     width: 85px;
@@ -18,9 +19,8 @@
   }
 }
 
-/* @media only screen and (min-width: 800px) {
+@media only screen and (max-width: 768px) {
   .landingbutton {
-    width: 200px;
-    height: 55px;
+    display: none;
   }
-} */
+}

@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./components/login.component";
 import  SignUp  from "./components/signup.component";
 import  { Logout }  from "./components/logout.component";
-import { Home } from "./components/home.component";
-import ItemsByCategory from "./components/itemsbycategory.component";
+import { Home } from "./home.component";
+import ItemsByCategory from "../Items/itemsbycategory.component";
 import Items from "./components/items.component";
 
 

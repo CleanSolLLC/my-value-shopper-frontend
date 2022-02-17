@@ -3,14 +3,17 @@ import { Container, Row, Button} from "react-bootstrap";
 import "./LandingPage.css"
 import { ReactComponent as Logo } from "./image1.svg";
 import { Link } from "react-router-dom";
+import Header from '../Header';
+import Footer from '../Footer';
 
 
 
 const LandingPage = () => {
   return(
        <Container>
+         <Header />
           <Row className="main">
-            <Logo style={{width: "800px", height: "800px", padding: 0 }} />
+            <Logo style={{width: "600px", height: "600 px", padding: 0 }} />
             <div className="mb-2">
               <Row>
                 <Link to={"/log-in"}>
@@ -26,6 +29,7 @@ const LandingPage = () => {
             </Row>
             </div>
           </Row>
+          <Footer />
        </Container>
   )
 }

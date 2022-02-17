@@ -3,6 +3,6 @@ import user from './user';
 import item from './item'
 
 export default combineReducers({
-  user: user,
-  items: item,
+  user,
+  item,
 });

@@ -1,5 +1,5 @@
 //import React from 'react';
-import auth from '../auth';
+import auth from '../../auth';
 //import Items from './items.component';
 //import Login from './items.component';
 
