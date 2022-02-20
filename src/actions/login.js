@@ -1,4 +1,4 @@
-//import { getUserItems } from './items';
+import { getUserItems } from './items';
 
 export const getCurrentUser = (data=null) =>  {
   return {
@@ -8,7 +8,6 @@ export const getCurrentUser = (data=null) =>  {
 }
 
 export const setItems = (items=null) =>  {
-  debugger
   return {
     type: 'SET_ITEMS',
     payload: items
@@ -50,7 +49,7 @@ export const getUser = () => dispatch => {
       localStorage.setItem('jwt', data.jwt)
       dispatch(getCurrentUser(data))
       dispatch(setItems(data.user.items))
-
+    
 
       }
     })

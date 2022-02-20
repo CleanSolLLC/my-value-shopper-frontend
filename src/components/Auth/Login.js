@@ -5,7 +5,6 @@ import { Redirect } from 'react-router';
 import Items  from '../Items/Items';
 import '../../index.css';
 import '../../bootstrap.min.css';
-import { Container, Row, Button} from "react-bootstrap";
 
 class Login extends Component {
 
@@ -35,12 +34,12 @@ class Login extends Component {
 
 
     render() {
-      // console.log(this.state)
-      // const { redirect } = this.state;
-      // if (redirect) {
-      //   return <Redirect to='/items'/>;
-      // }
-      // < Items />;
+      console.log(this.state)
+      const { redirect } = this.state;
+      if (redirect) {
+        return <Redirect to='/items'/>;
+      }
+      < Items />;
 
         return (
           <div className="auth-wrapper" style={{background: "#8bafdf"}}>

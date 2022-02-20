@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { newUser } from '../../actions/signup';
 import { Redirect } from 'react-router';
 import Items  from '../Items/Items';
-//import { getUser } from '../actions/login';
+import { getUser } from '../../actions/login';
 import { connect } from 'react-redux';
-import { Container } from "react-bootstrap";
 //import {useSelector, useDispatch } from 'react-redux';
 
 
@@ -23,15 +22,16 @@ class SignUp extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.newUser(this.state);
-        //getUser();
+        getUser();
+        <Items />;
+        
       }
     render() {
-      // console.log(this.state)
+      console.log(this.state)
       // const { redirect } = this.state;
       // if (redirect) {
       //   return <Redirect to='/items'/>;
       // }
-      // < Items />;
         return (
           <div className="auth-wrapper" style={{background: "#8bafdf"}}>
             <form className="auth-inner" onSubmit={this.handleSubmit}>

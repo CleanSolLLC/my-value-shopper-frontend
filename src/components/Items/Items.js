@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+import { Redirect } from 'react-router';
+import Header from "../UX/Header";
+import Footer from "../UX/Footer";
+//import { connect } from "react-redux";
 //import  ItemList  from "../itemlist.component.js";
 import auth from "../../auth";
 import { getUser} from '../../actions/login';
@@ -9,9 +12,7 @@ import { getUser} from '../../actions/login';
 class Items extends Component {
   componentDidMount() {
     if (auth.isAuthenticated()) {
-      this.props.getUser();
-      //this.props.getUserItems();
-      //<Redirect to = '/items' />
+      <Redirect to = '/' />
     }
   }
   // itemList = () => {
@@ -19,9 +20,11 @@ class Items extends Component {
   // }
   render() {
   return (
-    <ol>
+    <>
+      <Header />
+      <Footer />
       {/* {this.itemList().length > 0 ? this.itemList() : null} */}
-    </ol>
+    </>
   )
   }
 }      
@@ -33,8 +36,8 @@ class Items extends Component {
 //   // }
 // }
 
-const mapDispatchToProps = {
-  getUser,
-}
+// const mapDispatchToProps = {
+//   getUser,
+// }
 
-export default connect(null, mapDispatchToProps)(Items);
+export default Items;

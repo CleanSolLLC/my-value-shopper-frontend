@@ -8,10 +8,9 @@ const Header = () => {
 
 
   const protectedNavBaritems = () => { 
+     debugger
      if (auth.isAuthenticated()) {
-       return (
-          <ProtectedNavBarItems />
-       )
+       return  <ProtectedNavBarItems />
      };
   };
 

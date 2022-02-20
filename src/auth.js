@@ -25,8 +25,7 @@ class Auth {
 
    isAuthenticated() {
       if (localStorage.getItem('jwt') !== null) { 
-      this.authenticated = true
-      return this.isAuthenticated
+      return true
       }
 
    }

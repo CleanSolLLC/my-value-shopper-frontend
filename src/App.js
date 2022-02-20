@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getUser } from './actions/login';
 import  auth  from './auth'
 import LandingPage from "./components/UX/LandingPage/LandingPage";
-import { Route } from "react-router-dom";
+import { Route, Link, Redirect } from "react-router-dom";
 import SignUp from './components/Auth/Signup';
 import Login  from './components/Auth/Login';
 import Logout  from './components/Auth/Logout';
@@ -11,19 +11,18 @@ import Items  from './components/Items/Items';
 
 class App extends Component {
 
-  componentDidMount() {
-    if (auth.isAuthenticated()) {
-      this.props.getUser();
-      //<Redirect to = '/items' />
-    }
-  }
+  // componentDidMount() {
+  //   debugger
+  //   auth.isAuthenticated() ? <Link to="/items" /> : <Link to="/" />
+  // }
 
 
     render() {
+      debugger
       return (
         <>
-        {/* {auth.isAuthenticated() ? <Items /> : */}
-        <Route path="/" component={LandingPage} exact />}
+        {auth.isAuthenticated() ? <Redirect to ="/items" /> : null}
+        <Route path="/" component={LandingPage} exact />
         <Route exact path="/items" component={Items} />
         <Route exact path="/log-in" component={Login} />
         <Route exact path="/sign-up" component={SignUp} />
@@ -33,8 +32,8 @@ class App extends Component {
     }
   }
   
-  const mapDispatchToProps =  {
-    getUser,
-  };  
+  // const mapDispatchToProps =  {
+  //   getUser,
+  // };  
   
-export default connect(null, mapDispatchToProps)(App);
+export default App;
