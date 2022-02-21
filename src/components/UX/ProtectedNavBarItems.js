@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormControl, Nav, NavDropdown } from "react-bootstrap";
 
-const ProtectedNavBarItems = () => {
+const ProtectedNavBarItems = (props) => {
   return (
     <>
       <Nav className="m-auto">
@@ -14,7 +14,7 @@ const ProtectedNavBarItems = () => {
          <Nav.Link href="#home">My Amazing Items</Nav.Link>
          <Nav.Link href="#link">Notes</Nav.Link>
 
-         <NavDropdown title="Mark May" id="basic-nav-dropdown">
+         <NavDropdown title={`Welcome ${props.username}!`} id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
             <NavDropdown.Item href="/log-out">Logout</NavDropdown.Item>
          </NavDropdown>

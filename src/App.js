@@ -14,11 +14,17 @@ import { connect } from "react-redux";
 
 class App extends Component {
   
+  headerDetails = () => {
+    if (this.props.user) {
+      return <Header username={this.props.user.user.username}/>
+    }else {
+      return <Header />
+    }}
+
     render() {
-      console.log(this.props.user)
       return (
-        <>
-        <Header />
+        <>   
+        {this.headerDetails()}
         {auth.isAuthenticated() ? <Redirect to ="/items" /> : null}
         <Route path="/" component={LandingPage} exact />
         <Route exact path="/items" component={Items} />

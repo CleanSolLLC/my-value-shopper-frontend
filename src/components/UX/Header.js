@@ -5,7 +5,7 @@ import ProtectedNavBarItems from "./ProtectedNavBarItems";
 import { Link } from "react-router-dom";
 import User from "../User/User";
 
-const Header = () => {
+const Header = (props) => {
 
   const unprotectedNavBarItems = () => { 
    return  <>
@@ -22,7 +22,7 @@ const Header = () => {
 
   const renderNavBarItems = () => {
     if (auth.isAuthenticated()) {
-      return <ProtectedNavBarItems />
+      return <ProtectedNavBarItems username={props.username} />
     } else {
       return unprotectedNavBarItems()
     }
