@@ -9,7 +9,7 @@ import '../../bootstrap.min.css';
 class Login extends Component {
 
   state = {
-    redirect: false
+    redirect: false,
   }
 
     handleChange = (event) => {
@@ -34,7 +34,6 @@ class Login extends Component {
 
 
     render() {
-      console.log(this.state)
       const { redirect } = this.state;
       if (redirect) {
         return <Redirect to='/items'/>;

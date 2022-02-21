@@ -11,7 +11,6 @@ import Footer from '../Footer';
 const LandingPage = () => {
   return(
        <Container>
-         <Header />
           <Row className="main">
             <Logo style={{width: "650px", height: "650px", padding: 0 }} />
             <div className="mb-2">
@@ -29,7 +28,6 @@ const LandingPage = () => {
             </Row>
             </div>
           </Row>
-          <Footer />
        </Container>
   )
 }

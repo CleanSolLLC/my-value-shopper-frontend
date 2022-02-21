@@ -14,8 +14,6 @@ export const setItems = (items=null) =>  {
   }
 }
 
-
-
 export const getUser = () => dispatch => {
   const token = localStorage.getItem("jwt");  
   fetch("http://localhost:3001/api/v1/profile", {

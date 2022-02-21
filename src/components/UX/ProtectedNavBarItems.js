@@ -16,7 +16,7 @@ const ProtectedNavBarItems = () => {
 
          <NavDropdown title="Mark May" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Logout</NavDropdown.Item>
+            <NavDropdown.Item href="/log-out">Logout</NavDropdown.Item>
          </NavDropdown>
       </Nav>
     </>

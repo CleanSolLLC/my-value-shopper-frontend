@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router';
-import Header from "../UX/Header";
-import Footer from "../UX/Footer";
 //import { connect } from "react-redux";
 //import  ItemList  from "../itemlist.component.js";
 import auth from "../../auth";
@@ -21,8 +19,6 @@ class Items extends Component {
   render() {
   return (
     <>
-      <Header />
-      <Footer />
       {/* {this.itemList().length > 0 ? this.itemList() : null} */}
     </>
   )
