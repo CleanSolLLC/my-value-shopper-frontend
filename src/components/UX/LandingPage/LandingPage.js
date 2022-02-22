@@ -1,11 +1,8 @@
 import React from "react";
 import { Container, Row, Button} from "react-bootstrap";
 import "./LandingPage.css"
-import { ReactComponent as Logo } from "./image1.svg";
+import { ReactComponent as Logo } from "../images/image1.svg";
 import { Link } from "react-router-dom";
-import Header from '../Header';
-import Footer from '../Footer';
-
 
 
 const LandingPage = () => {

@@ -10,36 +10,47 @@ import Header from "./components/UX/Header";
 import Footer from "./components/UX/Footer";
 import { getUser } from "./actions/login";
 import { connect } from "react-redux";
+import RoutePath from "./components/UX/RoutePath";
 //import User from "./components/User/User";
 
 class App extends Component {
+
+    state={
+      headerHidden: false
+    }
+  
   
   headerDetails = () => {
-    if (this.props.user) {
+    if (this.props.user.user) {
       return <Header username={this.props.user.user.username}/>
     }else {
       return <Header />
     }}
 
+    error = () => {
+      debugger
+      this.setState({
+        error: true
+      })
+    }
+
     render() {
       return (
         <>   
-        {this.headerDetails()}
+        {this.state.headerHidden ? null : this.headerDetails()}
         {auth.isAuthenticated() ? <Redirect to ="/items" /> : null}
-        <Route path="/" component={LandingPage} exact />
-        <Route exact path="/items" component={Items} />
-        <Route exact path="/log-in" component={Login} />
-        <Route exact path="/sign-up" component={SignUp} />
-        <Route exact path="/log-out" component={Logout} />
+        <RoutePath error={this.error}/>
         <Footer />
         </>
       )
+
     }
   }
 
   const mapStateToProps = (state) => {
      return {
        user: state.user,
+       error: state.error
      }
   }
 
