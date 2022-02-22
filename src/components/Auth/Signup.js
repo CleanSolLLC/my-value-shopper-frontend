@@ -4,7 +4,6 @@ import { Redirect } from 'react-router';
 import Items  from '../Items/Items';
 import { getUser } from '../../actions/login';
 import { connect } from 'react-redux';
-//import {useSelector, useDispatch } from 'react-redux';
 
 
 class SignUp extends Component {

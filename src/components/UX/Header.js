@@ -31,7 +31,7 @@ const Header = (props) => {
   return (
     <Navbar fixed="top" className="banner" bg="primary" expand="md" variant="dark">
        <Container >
-         <Navbar.Text><Link to="/"><h4>My Value Shopper Powered by Mark's Amazing Shopper&copy;</h4></Link></Navbar.Text>
+         <Navbar.Text><h4 style={{color: "white"}}>My Value Shopper Powered by Mark's Amazing Shopper&copy;</h4></Navbar.Text>
          <Navbar.Toggle aria-controls="basic-navbar-nav" />   
          <Navbar.Collapse id="basic-navbar-nav">
             {renderNavBarItems()}

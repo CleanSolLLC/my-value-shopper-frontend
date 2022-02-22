@@ -6,26 +6,38 @@ import auth from "../../auth";
 import { getUser} from '../../actions/login';
 
 
-
 class Items extends Component {
-  componentDidMount() {
-    if (auth.isAuthenticated()) {
-      <Redirect to = '/' />
+
+  authorized = () => {
+    if(auth.isAuthenticated()) {
+      return null
+      }else {
+        return <Redirect to = '/' />
+      }  
     }
-  }
+  render() {
+  return (
+    <div>
+      {this.authorized()}
+    </div>
+  )}
+}     
+
+export default Items;
+
+
+  // componentDidMount() {
+  //   if (auth.isAuthenticated()) {
+  //     <Redirect to = '/' />
+  //   }
+  // }
   // itemList = () => {
   //   console.log(this.props.user.items.map(i => <ItemList item={i} key={i.id}/>))
   // }
-  render() {
-  return (
-    <>
-      {/* {this.itemList().length > 0 ? this.itemList() : null} */}
-    </>
-  )
-  }
-}      
 
-// const mapStateToProps = (...args) => {
+
+
+  // const mapStateToProps = (...args) => {
 //   console.log(args[0].user.username)
 //   // return {
 //   //   items: state.items,
@@ -35,5 +47,3 @@ class Items extends Component {
 // const mapDispatchToProps = {
 //   getUser,
 // }
-
-export default Items;

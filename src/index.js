@@ -8,7 +8,6 @@ import store, { Persistor } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 
-
 ReactDOM.render(
   <Router>
     <Provider store = {store}>
