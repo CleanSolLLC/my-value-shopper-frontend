@@ -1,70 +1,60 @@
 import React, { Component } from "react";
 import { newUser } from '../../actions/signup';
 import { Redirect } from 'react-router';
-import Items  from '../Items/Items';
-import { getUser } from '../../actions/login';
+import '../../index.css';
+import '../../bootstrap.min.css'; 
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from "./schema";
 import { connect } from 'react-redux';
 
 
-class SignUp extends Component {
+const SignUp = (props) => {
+  const { register, handleSubmit, formState: { errors }} = useForm({
+    resolver: yupResolver(schema),
+  });
 
-    handleChange = (event) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        this.props.newUser(this.state);
-        getUser();
-        <Items />;
-        
-      }
-    render() {
-      console.log(this.state)
-      // const { redirect } = this.state;
-      // if (redirect) {
-      //   return <Redirect to='/items'/>;
-      // }
+    const onSubmit = handleSubmit(data => props.newUser(data));
         return (
           <div className="auth-wrapper" style={{background: "#8bafdf"}}>
-            <form className="auth-inner" onSubmit={this.handleSubmit}>
+            <form className="auth-inner" onSubmit={onSubmit}>
                 <h3>Sign Up</h3>
 
                 <div className="form-group">
                     <label>Username</label>
-                    <input type="text" className="form-control" name="username" onChange={this.handleChange}
-                       value={newUser.username} placeholder="Username" />
-                </div>
+                    <input {...register("username")} type="text" className="form-control" name="username"
+                       placeholder="Enter Username" />
+                      <p className="error-message">{errors.username?.message}</p>
+                </div>                
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" className="form-control" name="email" onChange={this.handleChange}
-                       value={newUser.email} placeholder="Enter email" />
+                    <input {...register("email")} type="text" className="form-control .was-validated" name="email" id="email"
+                       placeholder="Enter email" 
+                    />
+                    <p>{errors.email ?.message}</p> 
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" name="password" onChange={this.handleChange}
-                       value={newUser.password} placeholder="Enter password" />
+                    <input {...register("password")} type="password" className="form-control" name="password"
+                       placeholder="Enter password" />
+                      <p className="error-message">{errors.password?.message}</p>
                 </div>
+
+                <div className="form-group">
+                    <label>Confirm Password</label>
+                    <input {...register("confirmPassword")} type="password" className="form-control" name="confirmPassword"
+                       placeholder="Confirm password" />
+                      <p className="error-message">{errors.confirmPassword && "Passwords Do Not Match!"}</p>
+                </div>
+
                 <br></br>
 
                 <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
             </form>
             </div>
         );
-    }
 }
 
-const mapStateToProps = state => {
-    return {
-      signupUser: state.newUser
-    };
-  };
-export default connect(mapStateToProps, {newUser})(SignUp);
+export default connect(null, {newUser})(SignUp);

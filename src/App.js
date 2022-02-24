@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import  auth  from "./auth"
-import LandingPage from "./components/UX/LandingPage/LandingPage";
-import { Route, Redirect } from "react-router-dom";
-import SignUp from "./components/Auth/Signup";
-import Login  from "./components/Auth/Login";
-import Logout  from "./components/Auth/Logout";
-import Items  from "./components/Items/Items";
+import { Redirect } from "react-router-dom";
 import Header from "./components/UX/Header";
 import Footer from "./components/UX/Footer";
-import { getUser } from "./actions/login";
+import { getUser } from "./actions/login.js";
 import { connect } from "react-redux";
 import RoutePath from "./components/UX/RoutePath";
 //import User from "./components/User/User";

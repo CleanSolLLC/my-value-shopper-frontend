@@ -30,6 +30,7 @@ export const getUser = () => dispatch => {
 }
 
   export const loginUser = (formData) => dispatch => {
+    debugger
     fetch('http://localhost:3001/api/v1/login', {
   
       method: 'POST',

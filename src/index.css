@@ -58,3 +58,8 @@ body, html, .App, #root, .auth-wrapper {
 .custom-control-label {
   font-weight: 400;
 }
+
+p {
+  background-color: #fee;
+  color: #c33;
+}

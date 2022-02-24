@@ -1,60 +1,37 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/login';
-import { Redirect } from 'react-router';
-import Items  from '../Items/Items';
 import '../../index.css';
-import '../../bootstrap.min.css';
+import '../../bootstrap.min.css'; 
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from "./schema";
 
-class Login extends Component {
+const Login = (props) => {
+  const { register, handleSubmit, formState: { errors }} = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  state = {
-    redirect: false,
-  }
-
-    handleChange = (event) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        this.props.loginUser(this.state)
-
-        this.setState({
-          redirect: true,
-        })
-      }
-
-
-
-    render() {
-      const { redirect } = this.state;
-      if (redirect) {
-        return <Redirect to='/items'/>;
-      }
-      < Items />;
+    const onSubmit = handleSubmit(data => props.loginUser(data));
 
         return (
           <div className="auth-wrapper" style={{background: "#8bafdf"}}>
-            <form className="auth-inner" onSubmit = {this.handleSubmit}>
+            <form className="auth-inner"  onSubmit = {onSubmit}>
                 <h3>Sign In</h3>
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input ref="email" type="email" className="form-control" name="email" onChange={this.handleChange}
-                       value={loginUser.email} placeholder="Enter email" />
+                    <input {...register("email")} type="text" className="form-control .was-validated" name="email" id="email"
+                       placeholder="Enter email" 
+                    />
+                    <p>{errors.email ?.message}</p> 
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input ref="password" type="password" className="form-control" name="password" onChange={this.handleChange}
-                       value={loginUser.password} placeholder="Enter password" />
+                    <input {...register("password")} type="password" className="form-control" name="password"
+                       placeholder="Enter password" />
+                      <p className="error-message">{errors.password?.message}</p>
                 </div>
                 <br></br>
 
@@ -64,14 +41,6 @@ class Login extends Component {
             </div>
 
         );
-
-
-    }
 }
-const mapStateToProps = state => {
-    return {
-      loginUser: state.loginUser
-    };
-  };
 
-export default connect(mapStateToProps, {loginUser})(Login);
+export default connect(null,{loginUser})(Login);
