@@ -8,16 +8,12 @@ import User from "../User/User";
 const Header = (props) => {
 
   const unprotectedNavBarItems = () => { 
-   return  <>
-   <NavDropdown title="Please Log In or Sign Up" id="basic-nav-dropdown-authenticate" >
-      <Link to={"/log-in"}>
-        <NavDropdown.Item href="/log-in">Login</NavDropdown.Item>
-      </Link>
-      <Link to={"/sign-up"}> 
-        <NavDropdown.Item href="/sign-up">Signup</NavDropdown.Item>
-       </Link>
-   </NavDropdown>
-    </>
+    return  <>
+    <NavDropdown title="Please Log In or Sign Up" id="basic-nav-dropdown-authenticate" >
+         <NavDropdown.Item as={Link} to ={"/log-in"}>Login</NavDropdown.Item>
+         <NavDropdown.Item as={Link} to={"/sign-up"}>Signup</NavDropdown.Item>
+    </NavDropdown>
+     </>
   }
 
   const renderNavBarItems = () => {
