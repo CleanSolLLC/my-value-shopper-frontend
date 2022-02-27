@@ -32,7 +32,7 @@ const SignUp = (props) => {
                     <input {...register("email")} type="text" className="form-control .was-validated" name="email" id="email"
                        placeholder="Enter email" 
                     />
-                    <p>{errors.email ?.message}</p> 
+                    <p>{errors.email?.message}</p> 
                 </div>
 
                 <div className="form-group">

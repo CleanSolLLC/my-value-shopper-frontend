@@ -1,4 +1,9 @@
-import { getUserItems } from './items';
+export const errorMsg = (data=null) => {
+  return {
+  type:  "CREATE_ERROR_MSG",
+  payload: data.message 
+  }
+}
 
 export const getCurrentUser = (data=null) =>  {
   return {
@@ -30,7 +35,6 @@ export const getUser = () => dispatch => {
 }
 
   export const loginUser = (formData) => dispatch => {
-    debugger
     fetch('http://localhost:3001/api/v1/login', {
   
       method: 'POST',
@@ -42,8 +46,8 @@ export const getUser = () => dispatch => {
     })
     .then(resp => resp.json())
     .then(data => {
-      if (data.error) {
-        alert(data.error)
+      if (data.message) {
+        dispatch(errorMsg(data))
       } else {
       localStorage.setItem('jwt', data.jwt)
       dispatch(getCurrentUser(data))

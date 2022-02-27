@@ -23,7 +23,6 @@ class App extends Component {
     }}
 
     error = () => {
-      debugger
       this.setState({
         error: true
       })
@@ -31,9 +30,9 @@ class App extends Component {
 
     render() {
       return (
-        <>   
-        {this.state.headerHidden ? null : this.headerDetails()}
-        {auth.isAuthenticated() ? <Redirect to ="/items" /> : null}
+        <> 
+        {this.props.error ? null : this.headerDetails()}
+        {auth.isAuthenticated() ? <Redirect to ="/items" /> : <Redirect to ="/" /> }
         <RoutePath error={this.error}/>
         <Footer />
         </>

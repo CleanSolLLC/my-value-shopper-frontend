@@ -14,7 +14,17 @@ const userReducer = (state = null, action) => {
       return {
         user: null,
         loggedIn: false
+      }
+   
+    case "CREATE_ERROR_MSG":
+      return {
+        authError: action.payload
       }  
+
+    case "CLEAR_ERROR_MSG":
+      return {
+        authError: null
+      }    
 
     default:
       return state; 

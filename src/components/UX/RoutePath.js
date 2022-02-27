@@ -7,13 +7,9 @@ import Logout  from "../Auth/Logout";
 import Items  from "../Items/Items";
 import PageNotFound from "../Errors/PageNotFound";
 
-const Routes = (props) => {
-    console.log(props)
-    
-    function NotFound(props) {
-        return <>props.error 
-        <PageNotFound />
-        </>
+const Routes = () => {  
+    function NotFound() {
+        return <PageNotFound />
     }
     return (
     <>

@@ -59,7 +59,10 @@ body, html, .App, #root, .auth-wrapper {
   font-weight: 400;
 }
 
+
 p {
+  display: flex;
+  justify-content: center;
   background-color: #fee;
   color: #c33;
 }
