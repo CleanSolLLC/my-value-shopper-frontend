@@ -1,3 +1,10 @@
+export const errorMsg = (data=null) => {
+  return {
+  type:  "CREATE_ERROR_MSG",
+  payload: data.error
+  }
+}
+
 export const createUser = (data) =>  {
   return {
     type: "CREATE_USER",
@@ -17,16 +24,15 @@ export const newUser = (formData) => dispatch => {
     })
     .then(resp => resp.json())
     .then(data => {
-      // save the token to localStorage for future access
+      if (data.error) {
+        dispatch(errorMsg(data))
+      } else {
       localStorage.setItem('jwt', data.jwt)
       dispatch(createUser(data))
-      // save the user somewhere (in state!) to log the user in
-
+      }
     })
     .catch(console.log)
-      //dispatch({ type: CREATE_USER_ERROR })
-    //)
-};
+  };
 
 
 

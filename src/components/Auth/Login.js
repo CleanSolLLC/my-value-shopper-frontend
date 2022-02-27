@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router';
-import { loginUser, errorMsg } from '../../actions/login';
+import { loginUser } from '../../actions/login';
 import { clearServerError } from '../../actions/clearServerError';
 import '../../index.css';
 import '../../bootstrap.min.css'; 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from "./schema";
+import { loginSchema } from "./loginSchema";
 
 const Login = (props) => {
   const { register, handleSubmit, reset, formState: { errors }} = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(loginSchema),
   });
 
   const [errorVisible, setErrorVisible] = useState(false)
