@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Button} from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { ReactComponent as Logo } from "../UX/images/image2.svg";
 import "./errors.css";
 

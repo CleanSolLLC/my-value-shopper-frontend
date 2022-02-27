@@ -3,8 +3,6 @@ import { Redirect } from 'react-router';
 //import { connect } from "react-redux";
 //import  ItemList  from "../itemlist.component.js";
 import auth from "../../auth";
-import { getUser} from '../../actions/login';
-
 
 class Items extends Component {
 

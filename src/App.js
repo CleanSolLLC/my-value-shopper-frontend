@@ -6,6 +6,7 @@ import Footer from "./components/UX/Footer";
 import { getUser } from "./actions/login.js";
 import { connect } from "react-redux";
 import RoutePath from "./components/UX/RoutePath";
+import ItemsContainer from "./components/Items/ItemsContainer";
 //import User from "./components/User/User";
 
 class App extends Component {
@@ -32,7 +33,7 @@ class App extends Component {
       return (
         <> 
         {this.props.error ? null : this.headerDetails()}
-        {auth.isAuthenticated() ? <Redirect to ="/items" /> : <Redirect to ="/" /> }
+        {auth.isAuthenticated() ? <ItemsContainer /> : <Redirect to ="/" /> }
         <RoutePath error={this.error}/>
         <Footer />
         </>
