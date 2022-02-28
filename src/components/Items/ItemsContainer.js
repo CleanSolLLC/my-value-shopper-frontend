@@ -1,30 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import Items from "./Items"
+import ItemList from "./ItemList";
 
-class ItemsComponent extends Component {
-  
-  render() {
-    const renderItems = () => {    
-      if (this.props.items) {
-          return this.props.items.map((item) => <Items key={item.id} item={item} /> )
-      } else {
-        <Items item={null} /> 
-      }
-    }
 
+
+const ItemsComponent = (props) => {
     return (
         <div>
-            {renderItems()}
+          {props.items ? <Items items={props.items} /> : <ItemList items={props.items} />}
         </div>
     )
-  }
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.user.user.items)
+    console.log(state.user.user)
   return {
-    items: state.user.user.items
+    items: state.user.user.items && null
   }
 }
 export default connect(mapStateToProps)(ItemsComponent);
