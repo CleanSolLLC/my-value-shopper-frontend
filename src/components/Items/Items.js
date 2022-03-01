@@ -1,16 +1,19 @@
-import React from "react";
-import  ItemList  from "./ItemList.js";
-import auth from "../../auth";
-import { getUser} from '../../actions/login';
+import React from 'react';
+import { Container, Row, Col} from "react-bootstrap";
+import "./items.css";
 
+const Items = ({item:{product_title, ASIN, app_sale_price, available_quantity, category_id, product_main_image_url }}) => {
+  console.log(ASIN, product_title,  app_sale_price, available_quantity )
+  return (
+    <div></div>
+//     <Container className="item-wrapper" fluid="lg">
+//   <Row>
+//     <Col>Item</Col>
+//   </Row>
+// </Container>
+    //  {/* {props.items ? console.log("List Items") : console.log("Enter First Item")} */}
+  )
+}   
 
-const Items = (props) => {  
-  if (props.items) {
-    return props.items.map((item) =>
-      <ul key={item.id}><ItemList item={item} /></ul>)
-  } else {
-    return null
-  }
-}  
 export default Items;
 

@@ -4,8 +4,6 @@ import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router';
 import { loginUser } from '../../actions/login';
 import { clearServerError } from '../../actions/clearServerError';
-import '../../index.css';
-import '../../bootstrap.min.css'; 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from "./loginSchema";

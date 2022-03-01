@@ -4,7 +4,7 @@ import LandingPage from "./LandingPage/LandingPage";
 import SignUp from "../Auth/Signup";
 import Login  from "../Auth/Login";
 import Logout  from "../Auth/Logout";
-import Items  from "../Items/Items";
+import Items  from "../Items/ProcessItems";
 import PageNotFound from "../Errors/PageNotFound";
 
 const Routes = () => {  

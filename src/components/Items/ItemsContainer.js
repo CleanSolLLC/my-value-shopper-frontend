@@ -1,14 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import Items from "./Items"
-import ItemList from "./ItemList";
+import ProcessItems from "./ProcessItems"
+import Items from "./Items";
+import { Redirect } from "react-router-dom";
 
 
 
-const ItemsComponent = (props) => {
+const ItemsContainer = (props) => {
     return (
-        <div>
-          {props.items ? <Items items={props.items} /> : <ItemList items={props.items} />}
+        <div className="auth-wrapper" style={{background: "#8bafdf"}}>
+          {props.user.items ? <ProcessItems items={props.user.items} /> : <Items user={props.user} />}
         </div>
     )
 }
@@ -16,7 +17,7 @@ const ItemsComponent = (props) => {
 const mapStateToProps = (state) => {
     console.log(state.user.user)
   return {
-    items: state.user.user.items && null
+    user: state.user.user
   }
 }
-export default connect(mapStateToProps)(ItemsComponent);
+export default connect(mapStateToProps)(ItemsContainer);

@@ -6,6 +6,7 @@ import './bootstrap.min.css';
 import App from './App';
 import store, { Persistor } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
+import './index.css';
 
 
 ReactDOM.render(
