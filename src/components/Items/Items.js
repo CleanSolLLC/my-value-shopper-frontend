@@ -30,16 +30,8 @@ const Items = ({item:{key, product_title, ASIN, app_sale_price, available_quanti
         </tbody>
       </Table>
       </div>
-    {/* //<div className="main">{ASIN} {product_title} {app_sale_price}{available_quantity}</div> */}
-
-  {/* <Row className="auth-inner" style={{display: "flex", width: "750px", height: "75vh", marginTop: "100px"}}>
-     <span>{ASIN}{product_title} ${app_sale_price} {available_quantity}</span>
-  </Row>
-</div> */}
-  </>
-    //  {/* {props.items ? console.log("List Items") : console.log("Enter First Item")} */}
+      </>
   )
 }   
-
 export default Items;
 
