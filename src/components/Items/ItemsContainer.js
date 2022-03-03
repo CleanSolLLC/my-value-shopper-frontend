@@ -6,12 +6,8 @@ import { Redirect } from "react-router-dom";
 
 
 
-const ItemsContainer = (props) => {
-    return (
-        <div className="auth-wrapper" style={{background: "#8bafdf"}}>
-          {props.user.items ? <ProcessItems items={props.user.items} /> : <Items user={props.user} />}
-        </div>
-    )
+const ItemsContainer = (props={}) => {
+  return props.user.items ? <ProcessItems items={props.user.items} name={props.user.username} /> : <Items name={props.user.username} />
 }
 
 const mapStateToProps = (state) => {

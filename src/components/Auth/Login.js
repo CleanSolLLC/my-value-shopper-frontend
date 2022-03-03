@@ -24,8 +24,9 @@ const Login = (props) => {
       props.clearServerError()
     }else {
         setErrorVisible(false)
-        return <Redirect to='/items'/>;
-      }
+        return <Redirect to="/items" />
+    }
+
   }
 
   const hideErrorMsg = () => {

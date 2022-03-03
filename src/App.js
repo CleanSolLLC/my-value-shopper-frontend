@@ -36,10 +36,8 @@ class App extends Component {
       return (
         <> 
         {this.props.error ? null : this.headerDetails()}
-        <ItemsContainer />
-        {auth.isAuthenticated() ? <Items /> : <Redirect to ="/" /> }
+        {auth.isAuthenticated() ? <Redirect to="/items" /> : <Redirect to ="/" /> }
         <RoutePath error={this.error}/>
-        <Items />
         <Footer />
         </>
       )
