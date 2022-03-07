@@ -1,7 +1,6 @@
-.item-wrapper {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  text-align: left;
-}
+/* @media only screen and (max-width: 1200px) {
+  .item-card {
+    min-height: 100vh;
+  }
+} */
 

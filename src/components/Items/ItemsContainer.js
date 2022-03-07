@@ -5,7 +5,7 @@ import Items from "./Items";
 import { Redirect } from "react-router-dom";
 
 const ItemsContainer = (props={}) => {
-  return props.user.items ? <ProcessItems items={props.user.items} name={props.user.username} /> : <Items name={props.user.username} />
+  return props.user.items ? <ProcessItems items={props.user.items} match={props.match} /> : null
 }
 
 const mapStateToProps = (state) => {
