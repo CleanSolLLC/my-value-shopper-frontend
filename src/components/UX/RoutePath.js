@@ -6,6 +6,7 @@ import Login  from "../Auth/Login";
 import Logout  from "../Auth/Logout";
 import PageNotFound from "../Errors/PageNotFound";
 import ItemsContainer from "../Items/ItemsContainer";
+import ItemCard from "../Items/ItemCard";
 
 const Routes = () => {  
     function NotFound() {
@@ -16,6 +17,7 @@ const Routes = () => {
     <Switch> 
       <Route exact path="/" component={LandingPage} />
       <Route path="/items" render={routerProps => <ItemsContainer {...routerProps}/>} />;
+      {/* <Route path="/item-card" component={ItemCard} />; */}
       <Route path="/log-in" component={Login} />;
       <Route path="/sign-up" component={SignUp} />;
       <Route path="/log-out" component={Logout} />;

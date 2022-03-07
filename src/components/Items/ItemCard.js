@@ -16,10 +16,10 @@ const ItemCard = (
     }={}
     }) => 
     {
-     
+      
     return (
       <Card className="item-card" style={{ width: '18rem', marginTop: "150px"}}>
-         <Card.Img variant="top" src={"https://m.media-amazon.com/images/I/71mkEM7sIWL._AC_SL1500_.jpg"} />
+         <Card.Img variant="top" src={"https://m.media-amazon.com/images/I/71mkEM7sIWL._AC_SL1500_.jpg"} alt={product_title} />
         <Card.Body>
           <Card.Title>{product_title}</Card.Title>
 
@@ -35,13 +35,10 @@ const ItemCard = (
           <h6>Quantity Available: {available_quantity}</h6>
           <span>
             <h6 style={{color: "blue" }}><a target="_blank" href={product_detail_url} title="example">Item on Amazon</a> {"\u00A0 \u00A0 \u00A0 \u00A0"}
-            <Link to="/">Close Window</Link></h6>
+            <Link to="/items">Close Window</Link></h6>
           </span>
         </Card.Body>
     </Card> 
     )
-    
-    
-  
 }
 export default ItemCard;

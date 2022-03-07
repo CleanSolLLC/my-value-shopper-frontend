@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import "./items.css";
 import Table from 'react-bootstrap/Table'
 import ItemCard from './ItemCard';
@@ -20,12 +20,6 @@ const Items = (
       {name}={}
   }) => {
 
-    //console.log(ASIN, product_title,  app_sale_price, available_quantity, name)  
-  
-    const prepareItemCard = (event) => {
-      event.preventDefault();
-      //return <ItemCard />
-    }
     return (
       <>
       <div className="auth-wrapper" style={{display: "flex", background: "#8bafdf"}}>
@@ -33,17 +27,17 @@ const Items = (
           <thead>
             <tr>
               <th>Add/Remove</th>
-              <th>Amazon Id Number</th>
+              <th style={{color: "blue"}}>Amazon Id Number</th>
               <th>Item Name</th>
               <th>Price USD</th>
               <th>Available Qty</th>
               <th>Category</th>
             </tr>
           </thead>
-          <tbody onClick={(event) => prepareItemCard(event)}>
+          <tbody>
              <tr>
                <td>+ -</td>
-               <td>{ASIN}</td>
+               <td style={{color: "blue"}}><Link key={id} to={`/items/${id}`}>{ASIN}</Link></td>
                <td>{product_title}</td>
                <td>{app_sale_price}</td>
                <td>{available_quantity}</td>
@@ -51,7 +45,10 @@ const Items = (
              </tr>
           </tbody>
         </Table>
-        <Route path='/items' render={routerProps => <ItemCard {...routerProps} item={item}/>} />
+        <Route 
+           path={`${match.url}/:id`} 
+           render={(routerProps) => <ItemCard {...routerProps} item={item} />}
+        />
         </div>
         </>
     )
