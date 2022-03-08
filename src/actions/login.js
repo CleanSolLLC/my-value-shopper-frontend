@@ -1,7 +1,7 @@
 export const errorMsg = (data=null) => {
   return {
   type:  "CREATE_ERROR_MSG",
-  payload: data.message 
+  payload: data.error
   }
 }
 
@@ -46,7 +46,7 @@ export const getUser = () => dispatch => {
     })
     .then(resp => resp.json())
     .then(data => {
-      if (data.message) {
+      if (data.error) {
         dispatch(errorMsg(data))
       } else {
       localStorage.setItem('jwt', data.jwt)

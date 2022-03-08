@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router';
-import { loginUser } from '../../actions/login';
-import { clearServerError } from '../../actions/clearServerError';
+import { loginUser, clearServerError } from '../../actions';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from "./loginSchema";
 
-const Login = (props) => {
+const Login = ({ 
+    error,
+    clearServerError,
+    loginUser,
+}) => {
+
   const { register, handleSubmit, reset, formState: { errors }} = useForm({
     resolver: yupResolver(loginSchema),
   });
@@ -17,14 +21,15 @@ const Login = (props) => {
 
   const onSubmit = (data, e) => {
     e.preventDefault();
-    props.loginUser(data)
-    if (props.error) {
+    loginUser(data);
+
+    if (error) {
       setErrorVisible(true);
       reset() 
-      props.clearServerError()
+      clearServerError()
     }else {
-        setErrorVisible(false)
-        return <Redirect to="/items" />
+      setErrorVisible(false)
+      return <Redirect to="/items" />
     }
 
   }
@@ -35,7 +40,7 @@ const Login = (props) => {
         return (
           <div className="auth-wrapper" style={{background: "#8bafdf"}}>
             <form className="auth-inner"  onSubmit = {handleSubmit(onSubmit)}>
-              <p> {errorVisible ? props.error : null}</p>
+              <p> {errorVisible ? error : null}</p>
                 <h3>Sign In</h3>
 
                 <div className="form-group">
