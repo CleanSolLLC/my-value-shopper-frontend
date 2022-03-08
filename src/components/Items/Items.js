@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import "./items.css";
-import Table from 'react-bootstrap/Table'
+import { Table, Button } from 'react-bootstrap';
 import ItemCard from './ItemCard';
 
 const Items = (
@@ -26,7 +26,7 @@ const Items = (
         <Table responsive="sm" className="auth-inner" style={{width: "auto", marginTop: "150px"}} striped bordered hover>
           <thead>
             <tr>
-              <th>Add/Remove</th>
+              <th style={{color: "blue"}}>Add/Remove</th>
               <th style={{color: "blue"}}>Amazon Id Number</th>
               <th>Item Name</th>
               <th>Price USD</th>
@@ -36,7 +36,7 @@ const Items = (
           </thead>
           <tbody>
              <tr>
-               <td>+ -</td>
+               <td><Button variant="primary">+</Button>{"\u00A0 \u00A0"}<Button variant="primary">-</Button></td>
                <td style={{color: "blue"}}><Link key={id} to={`/items/${id}`}>{ASIN}</Link></td>
                <td>{product_title}</td>
                <td>{app_sale_price}</td>
