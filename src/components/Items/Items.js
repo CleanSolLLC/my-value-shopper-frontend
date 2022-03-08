@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import "./items.css";
 import { Table, Button } from 'react-bootstrap';
 import ItemCard from './ItemCard';
+import ItemInputForm from './ItemInputForm';
 
 const Items = (
   { match,
@@ -23,6 +24,7 @@ const Items = (
     return (
       <>
       <div className="auth-wrapper" style={{display: "flex", background: "#8bafdf"}}>
+        <ItemInputForm />
         <Table responsive="sm" className="auth-inner" style={{width: "auto", marginTop: "150px"}} striped bordered hover>
           <thead>
             <tr>
