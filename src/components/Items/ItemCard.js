@@ -23,11 +23,9 @@ const ItemCard = (
         <Card.Body>
           <Card.Title>{product_title}</Card.Title>
 
-          <Card.Text class="bg-light"> 
-            <p class="card text-dark bg-light">
+          <Card.Text className="card text-dark bg-light"> 
               Some quick example text to build on the card title and make up the bulk of
               the card's content.
-            </p>
           </Card.Text>
           <h6>Price ${app_sale_price}</h6>
           <h6 style={{color: "red"}}>List Price: {original_price}</h6>

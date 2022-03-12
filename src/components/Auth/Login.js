@@ -5,7 +5,7 @@ import { Redirect } from 'react-router';
 import { loginUser, clearServerError } from '../../actions';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { loginSchema } from "./loginSchema";
+import { loginSchema } from "../../schemas/loginSchema";
 
 const Login = ({ 
     error,

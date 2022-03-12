@@ -1,4 +1,11 @@
-export const setUserItems = (data) =>  {
+export const errorMsg = (data=null) => {
+  return {
+  type:  "CREATE_ERROR_MSG",
+  payload: data.error
+  }
+}
+
+export const setUserItem = (data) =>  {
     console.log(data)
     return {
       type: 'SET_ITEMS',
@@ -17,8 +24,32 @@ export const getUserItems = () => dispatch => {
     })
     .then(resp => resp.json())
     .then(data => {
-     dispatch(setUserItems(data))
+     dispatch(setUserItem(data))
     })
 
     .catch(console.log)
   }
+
+  export const createUserItem = (formData) => dispatch => {
+    const token = localStorage.getItem("jwt");
+    fetch('http://localhost:3001/api/v1/items', {
+      method: 'POST',
+      headers:{ 
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      },
+
+      body: JSON.stringify({user: formData})
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      if (data.error) {
+        dispatch(errorMsg(data))
+      } else {
+      localStorage.setUserItem('jwt', data.jwt)
+      dispatch((data))
+      }
+    })
+    .catch(console.log)
+  };

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import "./items.css";
 import { Table, Button } from 'react-bootstrap';
 import ItemCard from './ItemCard';
 import ItemInputForm from './ItemInputForm';
+import { Redirect } from 'react-router-dom';
 
 const Items = (
   { match,
@@ -24,7 +25,6 @@ const Items = (
     return (
       <>
       <div className="auth-wrapper" style={{display: "flex", background: "#8bafdf"}}>
-        <ItemInputForm />
         <Table responsive="sm" className="auth-inner" style={{width: "auto", marginTop: "150px"}} striped bordered hover>
           <thead>
             <tr>
@@ -38,7 +38,7 @@ const Items = (
           </thead>
           <tbody>
              <tr>
-               <td><Button variant="primary">+</Button>{"\u00A0 \u00A0"}<Button variant="primary">-</Button></td>
+               <td><Button variant="primary"><Link key={id} to={`/items/new`}>+</Link></Button>{"\u00A0 \u00A0"}<Button variant="primary">-</Button></td>
                <td style={{color: "blue"}}><Link key={id} to={`/items/${id}`}>{ASIN}</Link></td>
                <td>{product_title}</td>
                <td>{app_sale_price}</td>
@@ -47,10 +47,17 @@ const Items = (
              </tr>
           </tbody>
         </Table>
+      <Switch>
         <Route 
-           path={`${match.url}/:id`} 
+           exact path={`${match.url}/new`}
+           render={(routerProps) => <ItemInputForm {...routerProps} />}
+        />
+
+        <Route 
+           exact path={`${match.url}/:id`} 
            render={(routerProps) => <ItemCard {...routerProps} item={item} />}
         />
+        </Switch>
         </div>
         </>
     )

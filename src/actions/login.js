@@ -39,7 +39,7 @@ export const getUser = () => dispatch => {
   
       method: 'POST',
       headers:{
-       'Content-type': 'application/json',
+       "Content-type": "application/json",
        "Accept": "application/json",
       },
       body: JSON.stringify({user: formData})
