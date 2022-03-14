@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Redirect } from 'react-router';
 import { clearServerError, createUserItem } from '../../actions';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -40,7 +39,7 @@ const ItemInputForm = ({
     setErrorVisible(false);
   }
  return (
-  <Form className="item-inner position-reletive" style={{ width: "17rem", marginTop: "150px", height: "60vh"}} onSubmit = {handleSubmit(onSubmit)}>
+  <Form className="item-inner position-reletive" style={{ width: "17rem", marginTop: "150px", height: "70vh"}} onSubmit = {handleSubmit(onSubmit)}>
     <Form.Group className="mb-3" controlId="formItemCode">
       <p> {errorVisible ? error : null}</p>
       <Form.Label>Amazon Item Code</Form.Label>
@@ -53,7 +52,7 @@ const ItemInputForm = ({
   
     <Form.Group className="mb-3" controlId="formItemCategory">
       <Form.Label>Category</Form.Label>
-        <Form.Select className="form-control" name="value" aria-label="Select category option"  {...register("value")} onFocus={hideErrorMsg}>
+        <Form.Select className="form-control" name="category" aria-label="Select category option"  {...register("value")} onFocus={hideErrorMsg}>
           <option>Select Category</option>
           <option value="1">Accessories</option>
           <option value="2">Appliances</option>

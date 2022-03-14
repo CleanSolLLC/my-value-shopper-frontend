@@ -4,23 +4,33 @@ import "./items.css";
 import { Table, Button } from 'react-bootstrap';
 import ItemCard from './ItemCard';
 import ItemInputForm from './ItemInputForm';
-import { Redirect } from 'react-router-dom';
 
 const Items = (
-  { match,
-    item,
-    item:
-    {id,
-      ASIN, 
-      product_title,
-      app_sale_price, 
-      available_quantity, 
-      category_id, 
-    }={},
-    
-    user:
-      {name}={}
+  { 
+    match,
+    items,
   }) => {
+
+   const renderItems = (item)=> {
+     return (
+
+      <tr key={item.id}>
+        <td><Button variant="primary"><Link key={item.id} to={`/items/new`}>+</Link></Button>{"\u00A0 \u00A0"}<Button variant="primary">-</Button></td>
+        <td style={{color: "blue"}}>
+           <Link key={item.id} to={{
+                   pathname: `/items/${item.id}`,
+                   state: item,
+                    }}>{item.ASIN}
+           </Link>
+        </td> 
+
+        <td>{item.product_title}</td>
+        <td>{item.app_sale_price}</td>
+        <td>{item.available_quantity}</td>
+        <td>{item.category_id}</td>
+      </tr>
+   )}
+      
 
     return (
       <>
@@ -37,26 +47,16 @@ const Items = (
             </tr>
           </thead>
           <tbody>
-             <tr>
-               <td><Button variant="primary"><Link key={id} to={`/items/new`}>+</Link></Button>{"\u00A0 \u00A0"}<Button variant="primary">-</Button></td>
-               <td style={{color: "blue"}}><Link key={id} to={`/items/${id}`}>{ASIN}</Link></td>
-               <td>{product_title}</td>
-               <td>{app_sale_price}</td>
-               <td>{available_quantity}</td>
-               <td>{category_id}</td>
-             </tr>
+            {items.map((renderItems))}
           </tbody>
         </Table>
+
       <Switch>
         <Route 
-           exact path={`${match.url}/new`}
-           render={(routerProps) => <ItemInputForm {...routerProps} />}
-        />
+           exact path={`${match.url}/new`} component={ItemInputForm} />
 
         <Route 
-           exact path={`${match.url}/:id`} 
-           render={(routerProps) => <ItemCard {...routerProps} item={item} />}
-        />
+           exact path={`${match.url}/:id`} component={ItemCard} />
         </Switch>
         </div>
         </>
