@@ -47,8 +47,8 @@ export const getUserItems = () => dispatch => {
       if (data.error) {
         dispatch(errorMsg(data))
       } else {
-      localStorage.setUserItem('jwt', data.jwt)
-      dispatch((data))
+      localStorage.setItem('jwt', data.jwt)
+      dispatch(getUserItems)
       }
     })
     .catch(console.log)

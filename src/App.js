@@ -3,7 +3,6 @@ import  auth  from "./auth"
 import { Redirect } from "react-router-dom";
 import Header from "./components/UX/Header";
 import Footer from "./components/UX/Footer";
-import { getUser } from "./actions/login.js";
 import { connect } from "react-redux";
 import RoutePath from "./components/UX/RoutePath";
 
@@ -49,4 +48,4 @@ class App extends Component {
      }
   }
 
-export default connect(mapStateToProps, {getUser})(App);
+export default connect(mapStateToProps)(App);

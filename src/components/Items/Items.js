@@ -27,7 +27,7 @@ const Items = (
         <td>{item.product_title}</td>
         <td>{item.app_sale_price}</td>
         <td>{item.available_quantity}</td>
-        <td>{item.category_id}</td>
+        <td>{item.category_name}</td>
       </tr>
    )}
       
