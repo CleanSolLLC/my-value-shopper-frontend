@@ -23,7 +23,7 @@ class User extends Component {
     return (
     <div>
        {this.setUserInfo} 
-       <Header loggedIn={this.props.loggedIn} user={this.props.User} />
+       <Header loggedIn={this.props.loggedIn} user={this.props.user} />
     </div>
     )
   }

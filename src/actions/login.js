@@ -46,13 +46,12 @@ export const getUser = () => dispatch => {
     })
     .then(resp => resp.json())
     .then(data => {
-      debugger
       if (data.error) {
         dispatch(errorMsg(data))
       } else {
       localStorage.setItem('jwt', data.jwt)
       dispatch(getCurrentUser(data))
-      // dispatch(setItems(data.user.items))
+      dispatch(setItems(data.user.items))
     
 
       }

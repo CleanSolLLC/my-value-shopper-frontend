@@ -52,7 +52,7 @@ const ItemInputForm = ({
   
     <Form.Group className="mb-3" controlId="formItemCategory">
       <Form.Label>Category</Form.Label>
-        <Form.Select className="form-control" name="category" aria-label="Select category option"  {...register("value")} onFocus={hideErrorMsg}>
+        <Form.Select className="form-control" name="category_id" aria-label="Select category option"  {...register("category_id")} onFocus={hideErrorMsg}>
           <option>Select Category</option>
           <option value="1">Accessories</option>
           <option value="2">Appliances</option>

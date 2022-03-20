@@ -4,6 +4,20 @@ const itemReducer = (state = null, action) => {
       return { 
         items: action.payload
       }
+
+    case "CHANGE_ITEM":
+        let { id, app_sale_price, discount } = action.payload
+        state.items.map((item) => {
+          if (item.id === action.payload.id) {
+            item.app_sale_price = app_sale_price
+            item.discount = discount
+          }
+        })
+        return {
+          items: state.items,
+        }
+        
+
     case "LOGOUT_USER":
       return {
         items: null

@@ -35,7 +35,7 @@ const Login = ({
   }
 
   const hideErrorMsg = () => {
-    setErrorVisible(false);
+    return setErrorVisible(false);
   }
         return (
           <div className="auth-wrapper" style={{background: "#8bafdf"}}>

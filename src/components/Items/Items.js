@@ -9,6 +9,7 @@ const Items = (
   { 
     match,
     items,
+    location,
   }) => {
 
    const renderItems = (item)=> {
@@ -56,7 +57,7 @@ const Items = (
            exact path={`${match.url}/new`} component={ItemInputForm} />
 
         <Route 
-           exact path={`${match.url}/:id`} component={ItemCard} />
+           exact path={`${match.url}/:id`} component={ItemCard} location={location} />
         </Switch>
         </div>
         </>

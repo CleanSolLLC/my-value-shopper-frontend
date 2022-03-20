@@ -1,15 +1,15 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { connect, useSelector } from "react-redux";
 import Items from "./Items";
 
 const ItemsContainer = (props={}) => {
-  return props.user.items ? <Items items={props.user.items} match={props.match} /> : null
+  return props.items ? <Items items={props.items} match={props.match} /> : null
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.user.user)
   return {
-    user: state.user.user
+    user: state.user.user,
+    items: state.item.items
   }
 }
 export default connect(mapStateToProps)(ItemsContainer);
