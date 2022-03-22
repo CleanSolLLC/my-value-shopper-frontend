@@ -3,6 +3,7 @@ import { connect, useSelector } from "react-redux";
 import Items from "./Items";
 
 const ItemsContainer = (props={}) => {
+  console.log(props)
   return props.items ? <Items items={props.items} match={props.match} /> : null
 }
 

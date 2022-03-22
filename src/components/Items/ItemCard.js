@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import { Form, Button, Card }  from "react-bootstrap";
 import { Link, useParams, Redirect } from "react-router-dom";
 import { updateUserItem, clearServerError } from '../../actions';
 import { useForm } from 'react-hook-form';
 import "./items.css";
-import Items from "./Items";
 
-const ItemCard = (props, {error, location}) => {
-  // props,
-  // error,
-  // clearServerError,
+const ItemCard = (props) => {
 
-// }) => {
   const { id } = useParams();
   const item = props.location.state;
 
@@ -21,31 +16,19 @@ const ItemCard = (props, {error, location}) => {
   };
 
   const { register, handleSubmit, reset, formState: { errors }} = useForm();
-
-  const [errorVisible, setErrorVisible] = useState(false)
+  const [viewItemCard, setViewItemCard] = useState(true)
 
   const onSubmit = (data, e) => {
     e.preventDefault();
     props.updateUserItem(data, id);
-
-
-    if (error) {
-      setErrorVisible(true);
-      reset() 
-      clearServerError()
-    }else {
-      setErrorVisible(false)
-      return <Items />
-      // return <Redirect to={location.href} />
-    }
-
-  }
-
-  const hideErrorMsg = () => {
-    return setErrorVisible(false);
+    setViewItemCard((prevState) => ({
+      ...prevState,
+      viewItemCards: false
+    }));
   }
 
     return (
+      viewItemCard ? 
       <Card className="item-card" style={{ width: '20rem', marginTop: "100px"}}>
          <Card.Img variant="top" src={item.product_main_image_url} alt={item.product_title} />
         <Card.Body>
@@ -59,9 +42,9 @@ const ItemCard = (props, {error, location}) => {
             </span>
               
           </Card.Text>
-          <h6>Price ${item.app_sale_price}</h6>
-          <h6 style={{color: "red"}}>List Price: {item.original_price === 0 ? item.app_sale_price : item.original_price}</h6>
-          <h6 style={{color: "green"}}> You Save: {item.original_price > 0 ? (item.app_sale_price - item.original_price).toFixed(2) : 0 }</h6>
+          <h6>Price ${item.app_sale_price.toFixed(2)}</h6>
+          <h6 style={{color: "red"}}>List Price: {item.original_price === 0 ? item.app_sale_price.toFixed(2) : item.original_price.toFixed(2)}</h6>
+          <h6 style={{color: "green"}}> You Save: {item.original_price > 0 ? (item.app_sale_price.toFixed(2) - item.original_price).toFixed(2) : 0 }</h6>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group>
             <input className="form-control" placeholder="Coupon Amount" name="coupon" {...register("coupon", {
@@ -83,6 +66,7 @@ const ItemCard = (props, {error, location}) => {
           </div>
         </Card.Body>
     </Card> 
+    : null 
     )
 }
 export default connect(null, {updateUserItem})(ItemCard);

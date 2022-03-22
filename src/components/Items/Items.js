@@ -26,7 +26,7 @@ const Items = (
         </td> 
 
         <td>{item.product_title}</td>
-        <td>{item.app_sale_price}</td>
+        <td>{item.app_sale_price.toFixed(2)}</td>
         <td>{item.available_quantity}</td>
         <td>{item.category_name}</td>
       </tr>
