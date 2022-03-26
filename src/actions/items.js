@@ -17,12 +17,18 @@ export const changeUserItem = (data) => {
     type: "CHANGE_ITEM",
     payload: data
   }
+}
+
+export const addUserItem = (data) => {
+  return {
+    type: "ADD_ITEM",
+    item: data
+  }
 } 
 
 export const getUserItems = () => dispatch => {
     const token = localStorage.getItem("jwt");  
     fetch("http://localhost:3001/api/v1/items", {
-      //credentials: 'include',
       method: "GET",
       headers: {
       Authorization: `Bearer ${token}`,
@@ -53,8 +59,7 @@ export const getUserItems = () => dispatch => {
       if (data.error) {
         dispatch(errorMsg(data))
       } else {
-      localStorage.setItem('jwt', data.jwt)
-      dispatch(getUserItems)
+      dispatch(addUserItem(data))
       }
     })
     .catch(console.log)
@@ -78,9 +83,7 @@ export const getUserItems = () => dispatch => {
       if (data.error) {
         dispatch(errorMsg(data))
       } else {
-      //localStorage.setItem('jwt', data.jwt)
       dispatch(changeUserItem(data))
-      //dispatch(getUserItems)
       }
     })
     .catch(console.log)

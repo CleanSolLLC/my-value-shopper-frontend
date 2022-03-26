@@ -16,6 +16,12 @@ const itemReducer = (state = null, action) => {
         return {
           items: state.items,
         }
+
+    case "ADD_ITEM":
+      return {
+        ...state,
+        items: [...action.item]
+      }    
         
 
     case "LOGOUT_USER":

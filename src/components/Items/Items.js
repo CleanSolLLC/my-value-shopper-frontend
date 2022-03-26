@@ -9,24 +9,24 @@ const Items = (
   { 
     match,
     items,
+    user,
     location,
   }) => {
 
    const renderItems = (item)=> {
      return (
-
-      <tr key={item.id}>
-        <td><Button variant="primary"><Link key={item.id} to={`/items/new`}>+</Link></Button>{"\u00A0 \u00A0"}<Button variant="primary">-</Button></td>
+      <tr>
+        <td><Button variant="primary"><Link to={`/items/new`}>+</Link></Button>{"\u00A0 \u00A0"}<Button variant="primary">-</Button></td>
         <td style={{color: "blue"}}>
-           <Link key={item.id} to={{
+           <Link to={{
                    pathname: `/items/${item.id}`,
                    state: item,
                     }}>{item.ASIN}
            </Link>
         </td> 
 
-        <td>{item.product_title}</td>
-        <td>{item.app_sale_price.toFixed(2)}</td>
+        <td key={item.id}>{item.product_title}</td>
+        <td>{item.app_sale_price}</td>
         <td>{item.available_quantity}</td>
         <td>{item.category_name}</td>
       </tr>
@@ -64,4 +64,3 @@ const Items = (
     )
 }     
 export default Items;
-

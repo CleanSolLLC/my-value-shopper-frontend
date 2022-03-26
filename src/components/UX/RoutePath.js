@@ -18,6 +18,7 @@ const Routes = () => {
     <Switch> 
       <Route exact path="/" component={LandingPage} />
       <Route path="/items" render={routerProps => <ItemsContainer {...routerProps}/>} />;
+      <Route path="/items/new" component={ItemInputForm}/>;
       <Route path="/log-in" component={Login} />;
       <Route path="/sign-up" component={SignUp} />;
       <Route path="/log-out" component={Logout} />;

@@ -4,7 +4,7 @@ import Items from "./Items";
 
 const ItemsContainer = (props={}) => {
   console.log(props)
-  return props.items ? <Items items={props.items} match={props.match} /> : null
+  return <Items items={props.items} match={props.match} />
 }
 
 const mapStateToProps = (state) => {

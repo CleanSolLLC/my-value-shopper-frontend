@@ -5,6 +5,7 @@ import { Link, useParams, Redirect } from "react-router-dom";
 import { updateUserItem, clearServerError } from '../../actions';
 import { useForm } from 'react-hook-form';
 import "./items.css";
+import Items from "./Items";
 
 const ItemCard = (props) => {
 
@@ -19,12 +20,8 @@ const ItemCard = (props) => {
   const [viewItemCard, setViewItemCard] = useState(true)
 
   const onSubmit = (data, e) => {
-    e.preventDefault();
-    props.updateUserItem(data, id);
-    setViewItemCard((prevState) => ({
-      ...prevState,
-      viewItemCards: false
-    }));
+    e.preventDefault()
+    props.updateUserItem(data, id)
   }
 
     return (
