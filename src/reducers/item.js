@@ -14,15 +14,26 @@ const itemReducer = (state = null, action) => {
           }
         })
         return {
-          items: state.items,
+          items: state.items
         }
 
     case "ADD_ITEM":
       return {
         ...state,
         items: [...action.item]
-      }    
-        
+      }
+
+    case "DATA_LOADING":
+      return {
+        ...state,
+        pending: true
+      }  
+      
+    case "LOAD_COMPLETE":
+      return {
+        ...state,
+        pending: false
+        }        
 
     case "LOGOUT_USER":
       return {

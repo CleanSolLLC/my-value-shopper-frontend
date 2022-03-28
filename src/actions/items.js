@@ -26,6 +26,18 @@ export const addUserItem = (data) => {
   }
 } 
 
+export const dataLoading = () => {
+  return {
+    type: "DATA_LOADING"
+  }
+}
+
+export const dataLoadComplete = () => {
+  return {
+    type: "LOAD_COMPLETE"
+  }
+}
+
 export const getUserItems = () => dispatch => {
     const token = localStorage.getItem("jwt");  
     fetch("http://localhost:3001/api/v1/items", {
@@ -43,6 +55,7 @@ export const getUserItems = () => dispatch => {
   }
 
   export const createUserItem = (formData) => dispatch => {
+    //dispatch(dataLoading()) 
     const token = localStorage.getItem("jwt");
     fetch('http://localhost:3001/api/v1/items', {
       method: 'POST',
@@ -56,11 +69,20 @@ export const getUserItems = () => dispatch => {
     })
     .then(resp => resp.json())
     .then(data => {
+
       if (data.error) {
         dispatch(errorMsg(data))
       } else {
       dispatch(addUserItem(data))
+      dispatch(dataLoadComplete()) 
+
+      // setTimeout(() => {
+      //   dispatch(dataLoadComplete())  
+      // }, 5000)
+
+
       }
+
     })
     .catch(console.log)
   };

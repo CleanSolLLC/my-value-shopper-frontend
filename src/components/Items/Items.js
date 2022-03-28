@@ -9,8 +9,8 @@ const Items = (
   { 
     match,
     items,
-    user,
     location,
+    user,
   }) => {
 
    const renderItems = (item)=> {
