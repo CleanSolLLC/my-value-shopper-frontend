@@ -15,7 +15,7 @@ const Items = (
 
    const renderItems = (item)=> {
      return (
-      <tr>
+      <tr key={item.id}>
         <td><Button variant="primary"><Link to={`/items/new`}>+</Link></Button>{"\u00A0 \u00A0"}<Button variant="primary">-</Button></td>
         <td style={{color: "blue"}}>
            <Link to={{
@@ -25,8 +25,8 @@ const Items = (
            </Link>
         </td> 
 
-        <td key={item.id}>{item.product_title}</td>
-        <td>{item.app_sale_price}</td>
+        <td >{item.product_title}</td>
+        <td>{item.app_sale_price.toFixed(2)}</td>
         <td>{item.available_quantity}</td>
         <td>{item.category_name}</td>
       </tr>

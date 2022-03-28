@@ -75,14 +75,7 @@ export const getUserItems = () => dispatch => {
       } else {
       dispatch(addUserItem(data))
       dispatch(dataLoadComplete()) 
-
-      // setTimeout(() => {
-      //   dispatch(dataLoadComplete())  
-      // }, 5000)
-
-
       }
-
     })
     .catch(console.log)
   };
