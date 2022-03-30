@@ -3,7 +3,7 @@ import { Container, Navbar, NavDropdown } from "react-bootstrap";
 import  auth  from '../../auth'
 import ProtectedNavBarItems from "./ProtectedNavBarItems";
 import { Link } from "react-router-dom";
-import User from "../User/User";
+import { connect } from "react-redux";
 
 const Header = (props) => {
 
@@ -18,7 +18,7 @@ const Header = (props) => {
 
   const renderNavBarItems = () => {
     if (auth.isAuthenticated()) {
-      return <ProtectedNavBarItems username={props.username} />
+      return <ProtectedNavBarItems username={props.user.user.username} />
     } else {
       return unprotectedNavBarItems()
     }
@@ -37,4 +37,10 @@ const Header = (props) => {
   )  
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
+}
+
+export default connect(mapStateToProps)(Header);

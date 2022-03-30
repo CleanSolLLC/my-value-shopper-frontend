@@ -34,7 +34,7 @@ class App extends Component {
         {this.props.error ? null : this.headerDetails()}
         {auth.isAuthenticated() ? <Redirect to="/items" /> : <Redirect to ="/" /> }
         <RoutePath error={this.error}/>
-        {/* <Footer /> */}
+        <Footer />
         </>
       )
 

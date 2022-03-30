@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Redirect } from 'react-router';
 import { loginUser, clearServerError } from '../../actions';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from "../../schemas/loginSchema";
+
 
 const Login = ({ 
     error,
@@ -29,7 +29,6 @@ const Login = ({
       clearServerError()
     }else {
       setErrorVisible(false)
-      return <Redirect to="/items" />
     }
 
   }
@@ -70,7 +69,8 @@ const Login = ({
 
 const mapStateToProps = (state) => {
   return {
-    error: state.user.authError
+    error: state.user.authError, 
+    items: state.user.items
   }
 }
 

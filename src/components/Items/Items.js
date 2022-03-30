@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Link, Switch, Redirect } from 'react-router-dom';
 import "./items.css";
 import { Table, Button } from 'react-bootstrap';
 import ItemCard from './ItemCard';
@@ -10,9 +10,8 @@ const Items = (
     match,
     items,
     location,
-    user,
   }) => {
-
+   console.log(items)
    const renderItems = (item)=> {
      return (
       <tr key={item.id}>
@@ -48,7 +47,7 @@ const Items = (
             </tr>
           </thead>
           <tbody>
-            {items.map((renderItems))}
+            {!items.length == [] ? items.map((renderItems)) : <Redirect to="/items/new" />}
           </tbody>
         </Table>
 
@@ -61,6 +60,7 @@ const Items = (
         </Switch>
         </div>
         </>
+
     )
 }     
 export default Items;

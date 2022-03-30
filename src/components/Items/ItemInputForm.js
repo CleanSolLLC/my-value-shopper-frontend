@@ -7,9 +7,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { itemInputSchema } from "../../schemas/itemInputSchema";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom"
-import "./items.css"
-import Spinner from 'react-bootstrap/Spinner'
+import { Link } from "react-router-dom";
+import "./items.css";
+import Spinner from 'react-bootstrap/Spinner';
 
 
 const ItemInputForm = ({
@@ -47,7 +47,7 @@ const ItemInputForm = ({
   }
 
   const closeForm = () => {
-    setTimeout(function() { return !pending ? setFormVisible(false) : null}, 7000)
+    setTimeout(function() { return !pending ? setFormVisible(false) : null}, 10000)
   }
 
   const hideErrorMsg = () => {

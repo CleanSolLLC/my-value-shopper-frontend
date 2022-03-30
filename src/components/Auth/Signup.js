@@ -32,7 +32,6 @@ const SignUp = ({
       clearServerError()
     }else {
        setErrorVisible(false);
-        return <Redirect to='/items'/>;
       }
   }
 
