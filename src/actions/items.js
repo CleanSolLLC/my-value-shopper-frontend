@@ -19,6 +19,13 @@ export const changeUserItem = (data) => {
   }
 }
 
+export const removeUserItem = (data) => {
+  return {
+    type: "DELETE_ITEM",
+    payload: data
+  }
+}
+
 export const addUserItem = (data) => {
   return {
     type: "ADD_ITEM",
@@ -98,6 +105,29 @@ export const getUserItems = () => dispatch => {
         dispatch(errorMsg(data))
       } else {
       dispatch(changeUserItem(data))
+      }
+    })
+    .catch(console.log)
+  };
+
+  export const deleteUserItem = (url, id) => dispatch => {
+    dispatch(removeUserItem(id))
+    const token = localStorage.getItem("jwt");
+    fetch(`http://localhost:3001/api/v1` + `${url}`, {
+      method: 'DELETE',
+      headers:{ 
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      },
+
+      // body: JSON.stringify({user: formData})
+    })
+    .then(resp => resp.json())
+    .then(data => {
+
+      if (data.error) {
+        dispatch(errorMsg(data))
       }
     })
     .catch(console.log)

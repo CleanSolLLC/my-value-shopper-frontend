@@ -47,7 +47,7 @@ const ItemInputForm = ({
   }
 
   const closeForm = () => {
-    setTimeout(function() { return !pending ? setFormVisible(false) : null}, 10000)
+    setTimeout(function() { return !pending ? setFormVisible(false) : setFormVisible(true)}, 15000)
   }
 
   const hideErrorMsg = () => {

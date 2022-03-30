@@ -23,6 +23,12 @@ const itemReducer = (state = null, action) => {
         items: [...action.item]
       }
 
+    case "DELETE_ITEM":
+      return {
+        ...state,
+        items: state.items.filter(item=> item.id !== action.payload)
+        }  
+
     case "DATA_LOADING":
       return {
         ...state,

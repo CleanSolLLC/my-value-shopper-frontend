@@ -75,9 +75,9 @@ const ItemCard = (props) => {
     : null 
     )
 }
-const mapStateToProps = (state) => {
-  console.log(state.location)
-  return {
-  }
-}
-export default connect(mapStateToProps, {updateUserItem})(ItemCard);
+// const mapStateToProps = (state) => {
+//   console.log(state)
+  // return {
+  // }
+//}
+export default connect(null, {updateUserItem})(ItemCard);

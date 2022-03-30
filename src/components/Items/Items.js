@@ -1,21 +1,39 @@
 import React from 'react';
-import { Route, Link, Switch, Redirect } from 'react-router-dom';
+import { Route, Link, Switch, Redirect, useParams } from 'react-router-dom';
 import "./items.css";
 import { Table, Button } from 'react-bootstrap';
 import ItemCard from './ItemCard';
 import ItemInputForm from './ItemInputForm';
+import { connect } from 'react-redux';
+import { deleteUserItem } from '../../actions';
 
 const Items = (
   { 
     match,
     items,
     location,
+    deleteUserItem
   }) => {
-   console.log(items)
    const renderItems = (item)=> {
+
+    const deleteHandler = (e) => {
+      e.preventDefault();
+      let url = e.target.href.split("3000")[1]
+      let id = parseInt(e.target.href.split("/items/")[1]) 
+      deleteUserItem(url, id)
+    }
+
      return (
       <tr key={item.id}>
-        <td><Button variant="primary"><Link to={`/items/new`}>+</Link></Button>{"\u00A0 \u00A0"}<Button variant="primary">-</Button></td>
+        <td><Button variant="primary"><Link to={`/items/new`}>+</Link></Button>{"\u00A0 \u00A0"}
+            <Button onClick={deleteHandler} variant="primary">
+              <Link to={{
+                pathname: `/items/${item.id}`,
+                state: item,
+                }}>-
+              </Link>
+            </Button></td>
+
         <td style={{color: "blue"}}>
            <Link to={{
                    pathname: `/items/${item.id}`,
@@ -57,10 +75,17 @@ const Items = (
 
         <Route 
            exact path={`${match.url}/:id`} component={ItemCard} location={location} />
+
+        {/* <Route 
+           exact path={`${match.url}/:id/delete`} render={(location) => deleteUserItem(location)} /> */}
         </Switch>
         </div>
         </>
 
     )
-}     
-export default Items;
+}
+
+const mapDispatchToProps = dispatch => {
+  return deleteUserItem
+}    
+export default connect(null, {deleteUserItem})(Items);
