@@ -20,21 +20,14 @@ class App extends Component {
         error: true
       })
     }
-  
-  headerDetails = () => {
-    if (this.props.user.user) {
-      return <Header username={this.props.user.user.username}/>
-    }else {
-      return <Header />
-    }}
 
     render() {
       return (
         <> 
-        {this.props.error ? null : this.headerDetails()}
+        <Header />
         {auth.isAuthenticated() ? <Redirect to="/items" /> : <Redirect to ="/" /> }
         <RoutePath error={this.error}/>
-        <Footer />
+        {/* <Footer /> */}
         </>
       )
 

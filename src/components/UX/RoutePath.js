@@ -6,7 +6,6 @@ import Login  from "../Auth/Login";
 import Logout  from "../Auth/Logout";
 import PageNotFound from "../Errors/PageNotFound";
 import ItemsContainer from "../Items/ItemsContainer";
-import ItemCard from "../Items/ItemCard";
 import ItemInputForm from "../Items/ItemInputForm";
 
 const Routes = () => {  

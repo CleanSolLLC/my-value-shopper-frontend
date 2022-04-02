@@ -1,8 +1,8 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { clearServerError, createUserItem, dataLoading } from '../../actions';
+import { clearServerError, createUserItem, dataLoadComplete, dataLoading } from '../../actions';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { itemInputSchema } from "../../schemas/itemInputSchema";
@@ -10,6 +10,9 @@ import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./items.css";
 import Spinner from 'react-bootstrap/Spinner';
+import Items from "./Items";
+import ItemsContainer from "./ItemsContainer";
+import { Redirect } from "react-router-dom";
 
 
 const ItemInputForm = ({
@@ -17,20 +20,34 @@ const ItemInputForm = ({
   clearServerError,
   createUserItem,
   dataLoading,
-  pending
+  pending,
+  items
 }) => {
   const { register, handleSubmit, reset, formState: { errors }} = useForm({
     resolver: yupResolver(itemInputSchema),
   });
 
+
+  // useEffect(()=> {
+  //  !pending ? setFormVisible(false) : setFormVisible(true)
+  // },[]);
+
+  // useEffect(()=> {
+  //   !formVisible ? setFormVisible(true) : null
+  //  });
+
+   
   const [errorVisible, setErrorVisible] = useState(false)
-  const [formVisible, setFormVisible] = useState(true)
+  // const [formVisible, setFormVisible] = useState(true)
   const [spinnerVisible, setSpinnerVisible] = useState(false)
   const [isDisabled, setIsDisabled] = useState(false)
 
+
   const onSubmit = (data, e) => {
+    console.log(pending)
     e.preventDefault();
     dataLoading()
+    console.log(pending)
     createUserItem(data)
 
     if (error) {
@@ -41,15 +58,9 @@ const ItemInputForm = ({
       setErrorVisible(false)
       setSpinnerVisible(true)
       setIsDisabled(true)
-      closeForm()
     }
 
   }
-
-  const closeForm = () => {
-    setTimeout(function() { return !pending ? setFormVisible(false) : setFormVisible(true)}, 15000)
-  }
-
   const hideErrorMsg = () => {
     setErrorVisible(false);
   }
@@ -65,9 +76,6 @@ const ItemInputForm = ({
 
  return (
    <>
-
-   { formVisible ? 
-
   <Form className="item-inner position-reletive" style={{ width: "17rem", marginTop: "150px", height: "75vh"}} onSubmit = {handleSubmit(onSubmit) }>
     {spinnerVisible ? displaySpinner() : null}
     <Form.Group className="mb-3" controlId="formItemCode">
@@ -105,16 +113,15 @@ const ItemInputForm = ({
        <h6 style={{color: "blue" }}><Link to="/items">Close Window</Link></h6>
     </div>
   </Form>
-  : null
-  }
   </>
  )
 }
 const mapStateToProps = (state) => {
-  console.log(state.item.pending)
+  console.log(state.pending)
   return {
     error: state.user.authError,
-    pending: state.item.pending
+    pending: state.item.pending,
+    items: state.item.items,
   }
 }
 

@@ -62,6 +62,7 @@ export const getUserItems = () => dispatch => {
   }
 
   export const createUserItem = (formData) => dispatch => {
+    dispatch(dataLoading())
     const token = localStorage.getItem("jwt");
     fetch('http://localhost:3001/api/v1/items', {
       method: 'POST',
