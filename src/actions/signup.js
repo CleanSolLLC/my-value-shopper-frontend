@@ -5,9 +5,16 @@ export const errorMsg = (data=null) => {
   }
 }
 
-export const createUser = (data) =>  {
+// export const createUser = (data) =>  {
+//   return {
+//     type: "CREATE_USER",
+//     user: data.user
+//   }
+// }
+
+export const setCurrentUser = (data=null) =>  {
   return {
-    type: "CREATE_USER",
+    type: 'SET_CURRENT_USER',
     user: data.user
   }
 }
@@ -28,7 +35,7 @@ export const newUser = (formData) => dispatch => {
         dispatch(errorMsg(data))
       } else {
       localStorage.setItem('jwt', data.jwt)
-      dispatch(createUser(data))
+      dispatch(setCurrentUser(data))
       }
     })
     .catch(console.log)

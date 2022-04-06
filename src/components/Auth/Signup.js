@@ -85,7 +85,7 @@ const SignUp = ({
 
 const mapStateToProps = (state) => {
   return {
-    error: state.user.authError
+    error: state.authError
   }
 }
 
