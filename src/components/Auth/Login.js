@@ -69,8 +69,8 @@ const Login = ({
 
 const mapStateToProps = (state) => {
   return {
-    error: state.user.authError, 
-    items: state.user.items
+    error: state.authError, 
+    //items: state.user.items
   }
 }
 

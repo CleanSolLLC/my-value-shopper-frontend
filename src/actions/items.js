@@ -28,8 +28,8 @@ export const removeUserItem = (data) => {
 
 export const addUserItem = (data) => {
   return {
-    type: "ADD_ITEM",
-    item: data
+    type: "ADD_USER_ITEM",
+    payload: data
   }
 } 
 
@@ -44,22 +44,6 @@ export const dataLoadComplete = () => {
     type: "LOAD_COMPLETE"
   }
 }
-
-export const getUserItems = () => dispatch => {
-    const token = localStorage.getItem("jwt");  
-    fetch("http://localhost:3001/api/v1/items", {
-      method: "GET",
-      headers: {
-      Authorization: `Bearer ${token}`,
-      },
-    })
-    .then(resp => resp.json())
-    .then(data => {
-     dispatch(setUserItem(data))
-    })
-
-    .catch(console.log)
-  }
 
   export const createUserItem = (formData) => dispatch => {
     dispatch(dataLoading())

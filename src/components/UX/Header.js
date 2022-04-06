@@ -18,7 +18,7 @@ const Header = (props) => {
 
   const renderNavBarItems = () => {
     if (auth.isAuthenticated()) {
-      return <ProtectedNavBarItems username={props.user.user.username} />
+      return <ProtectedNavBarItems username={props.username} />
     } else {
       return unprotectedNavBarItems()
     }
@@ -39,7 +39,7 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
+    username: state.username,
   }
 }
 

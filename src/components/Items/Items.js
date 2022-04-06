@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { Route, Link, Switch, Redirect, useParams } from 'react-router-dom';
+import React from 'react';
+import { Route, Link, Switch } from 'react-router-dom';
 import "./items.css";
 import { Table, Button } from 'react-bootstrap';
 import ItemCard from './ItemCard';
@@ -16,14 +16,6 @@ const Items = (
     location,
     deleteUserItem
   }) => {
-   //debugger
-
-  // const [displayTable, setDisplayTable] = useState("")
-  // return !props.items? <ItemInputForm /> : <Items items={props.items} match={props.match} />
-
-  // const renderItemForm = () => {
-  //   return <ItemInputForm />
-  // }
 
    const renderItems = (item)=> {
 
@@ -54,8 +46,7 @@ const Items = (
         </td> 
 
         <td >{item.product_title}</td>
-        <td>{item.app_sale_price}</td>
-        {/* <td>{item.app_sale_price.toFixed(2)}</td> */}
+        <td>{item.app_sale_price.toFixed(2)}</td>
         <td>{item.available_quantity}</td>
         <td>{item.category_name}</td>
       </tr>
@@ -64,7 +55,6 @@ const Items = (
 
     return (
       <>
-      { items.length !==0 ?
       <div className="auth-wrapper" style={{display: "flex", background: "#8bafdf"}}>
         <Table responsive="sm" className="auth-inner" style={{width: "auto", marginTop: "150px"}} striped bordered hover>
           <thead>
@@ -89,21 +79,17 @@ const Items = (
         <Route 
            path={`${match.url}/:id`} component={ItemCard} location={location} />
 
-        {/* <Route 
-           exact path={`${match.url}/:id/delete`} render={(location) => deleteUserItem(location)} /> */}
         </Switch>
         </div>
-        : <ItemInputForm />
-          }
         </>
 
     )
 }
-// const mapStateToProps = (state) => {
-//   console.log(state.item.items)
-//   return {
-//     user: state.user.user,
-//     items: state.item.items,
-//   }
-// } 
-export default connect(null, {deleteUserItem})(Items);
+const mapStateToProps = (state) => {
+  console.log(state.items)
+  return {
+    items: state.items,
+    pending: state.pending,
+  }
+} 
+export default connect(mapStateToProps, {deleteUserItem})(Items);

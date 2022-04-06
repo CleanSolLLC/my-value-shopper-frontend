@@ -2,19 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import ItemInputForm from "./ItemInputForm";
 import Items from "./Items";
-import { Redirect, } from "react-router-dom"
+import { Redirect, Link, withRouter, Switch } from "react-router-dom"
 
 const ItemsContainer = (props={}) => {  
   console.log(props.items)
-  debugger
-  return props.items ? <Items items={props.items} match={props.match} /> : <Items items={props.user.items} match={props.match} />
+  return props.items.length > 0 ? <Items items={props.items} match={props.match} /> : <ItemInputForm />
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.item.items)
+  console.log(state.items)
   return {
-    user: state.user.user,
-    items: state.item.items,
+    items: state.items,
   }
 }
-export default connect(mapStateToProps)(ItemsContainer);
+export default withRouter(connect(mapStateToProps)(ItemsContainer));

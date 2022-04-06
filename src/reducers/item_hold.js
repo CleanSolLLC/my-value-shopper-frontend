@@ -17,7 +17,7 @@ const itemReducer = (state = null, action) => {
           items: state.items
         }
 
-    case "ADD_ITEM":
+    case "ADD_USER_ITEM":
       return {
         ...state,
         items: [...action.item]

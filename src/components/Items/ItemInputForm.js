@@ -2,20 +2,18 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { clearServerError, createUserItem, dataLoadComplete, dataLoading } from '../../actions';
+import { clearServerError, createUserItem, dataLoading } from '../../actions';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { itemInputSchema } from "../../schemas/itemInputSchema";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import "./items.css";
 import Spinner from 'react-bootstrap/Spinner';
-import Items from "./Items";
-import ItemsContainer from "./ItemsContainer";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link} from "react-router-dom";
 
 
 const ItemInputForm = ({
+  displayForm,
   error,  
   clearServerError,
   createUserItem,
@@ -27,18 +25,11 @@ const ItemInputForm = ({
     resolver: yupResolver(itemInputSchema),
   });
 
+  useEffect(()=> {
+   dataLoading()
+  },[]);
 
-  // useEffect(()=> {
-  //  !pending ? setFormVisible(false) : setFormVisible(true)
-  // },[]);
-
-  // useEffect(()=> {
-  //   !formVisible ? setFormVisible(true) : null
-  //  });
-
-   
   const [errorVisible, setErrorVisible] = useState(false)
-  // const [formVisible, setFormVisible] = useState(true)
   const [spinnerVisible, setSpinnerVisible] = useState(false)
   const [isDisabled, setIsDisabled] = useState(false)
 
@@ -46,7 +37,6 @@ const ItemInputForm = ({
   const onSubmit = (data, e) => {
     console.log(pending)
     e.preventDefault();
-    dataLoading()
     console.log(pending)
     createUserItem(data)
 
@@ -75,7 +65,8 @@ const ItemInputForm = ({
 
 
  return (
-   <>
+  <>
+  {pending ?
   <Form className="item-inner position-reletive" style={{ width: "17rem", marginTop: "150px", height: "75vh"}} onSubmit = {handleSubmit(onSubmit) }>
     {spinnerVisible ? displaySpinner() : null}
     <Form.Group className="mb-3" controlId="formItemCode">
@@ -113,15 +104,18 @@ const ItemInputForm = ({
        <h6 style={{color: "blue" }}><Link to="/items">Close Window</Link></h6>
     </div>
   </Form>
+  :   <Redirect to="/items" />
+
+}
   </>
  )
 }
 const mapStateToProps = (state) => {
-  console.log(state.pending)
+  console.log(state)
   return {
-    error: state.user.authError,
-    pending: state.item.pending,
-    items: state.item.items,
+    error: state.authError,
+    pending: state.pending,
+    items: state.items,
   }
 }
 
@@ -135,4 +129,4 @@ const mapDispatchToProps = dispatch => {
     }, dispatch)
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ItemInputForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemInputForm);

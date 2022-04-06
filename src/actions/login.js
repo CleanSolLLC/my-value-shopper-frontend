@@ -5,34 +5,25 @@ export const errorMsg = (data=null) => {
   }
 }
 
-export const getCurrentUser = (data=null) =>  {
+export const setCurrentUser = (data=null) =>  {
   return {
-    type: 'GET_CURRENT_USER',
-    payload: data.user
+    type: 'SET_CURRENT_USER',
+    user: data.user
   }
 }
 
-export const setItems = (items=null) =>  {
+export const dataLoading = () => {
   return {
-    type: 'SET_ITEMS',
-    payload: items
+    type: "DATA_LOADING"
   }
 }
 
-export const getUser = () => dispatch => {
-  const token = localStorage.getItem("jwt");  
-  fetch("http://localhost:3001/api/v1/profile", {
-
-    method: "GET",
-    headers: {
-    Authorization: `Bearer ${token}`,
-    },
-  })
-  .then(resp => resp.json())
-  .then(data => {
-    dispatch(getCurrentUser(data))
-  })
-}
+// export const setItems = (items=null) =>  {
+//   return {
+//     type: 'SET_ITEMS',
+//     payload: items
+//   }
+// }
 
   export const loginUser = (formData) => dispatch => {
     fetch('http://localhost:3001/api/v1/login', {
@@ -50,8 +41,9 @@ export const getUser = () => dispatch => {
         dispatch(errorMsg(data))
       } else {
       localStorage.setItem('jwt', data.jwt)
-      dispatch(getCurrentUser(data))
-      dispatch(setItems(data.user.items))
+      dispatch(setCurrentUser(data))
+      //dispatch(setItems(data.user.items))
+      dispatch(dataLoading())
     
 
       }
