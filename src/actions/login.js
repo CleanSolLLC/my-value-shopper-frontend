@@ -8,7 +8,7 @@ export const errorMsg = (data=null) => {
 export const setCurrentUser = (data=null) =>  {
   return {
     type: 'SET_CURRENT_USER',
-    user: data.user
+    user: data.user,
   }
 }
 
@@ -17,13 +17,6 @@ export const dataLoading = () => {
     type: "DATA_LOADING"
   }
 }
-
-// export const setItems = (items=null) =>  {
-//   return {
-//     type: 'SET_ITEMS',
-//     payload: items
-//   }
-// }
 
   export const loginUser = (formData) => dispatch => {
     fetch('http://localhost:3001/api/v1/login', {
@@ -42,7 +35,6 @@ export const dataLoading = () => {
       } else {
       localStorage.setItem('jwt', data.jwt)
       dispatch(setCurrentUser(data))
-      //dispatch(setItems(data.user.items))
       dispatch(dataLoading())
     
 

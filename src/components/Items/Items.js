@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Link, Switch, useHistory } from 'react-router-dom';
 import "./items.css";
 import { Table, Button } from 'react-bootstrap';
 import ItemCard from './ItemCard';
@@ -16,7 +16,8 @@ const Items = (
     location,
     deleteUserItem
   }) => {
-
+   
+   const history = useHistory();
    const renderItems = (item)=> {
 
     const deleteHandler = (e) => {
@@ -24,6 +25,15 @@ const Items = (
       let url = e.target.href.split("3000")[1]
       let id = parseInt(e.target.href.split("/items/")[1]) 
       deleteUserItem(url, id)
+    }
+
+    const itemDetailHandler = (e) => {
+      e.preventDefault();
+      history.push({
+        pathname: `/items/${item.id}`,
+        search: '',
+        state: item
+    });
     }
 
      return (
@@ -37,13 +47,10 @@ const Items = (
               </Link>
             </Button></td>
 
-        <td style={{color: "blue"}}>
-           <Link to={{
-                   pathname: `/items/${item.id}`,
-                   state: item,
-                    }}>{item.ASIN}
-           </Link>
-        </td> 
+        <td><Button onClick={itemDetailHandler} variant="outline-primary">
+           {item.ASIN}
+           </Button>
+        </td>      
 
         <td >{item.product_title}</td>
         <td>{item.app_sale_price.toFixed(2)}</td>

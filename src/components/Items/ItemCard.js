@@ -67,8 +67,8 @@ const ItemCard = (props) => {
 
           <br></br>
           <div style={{color: "blue" }} >
-            <h6><a target="_blank" href={item.product_detail_url} title="example">Item on Amazon</a></h6>
-            <h6><Link to="/items">Close Window</Link></h6>
+            <b><a target="_blank" href={item.product_detail_url} title="example">Item on Amazon</a></b><br></br>
+            <b><Link to="/items">Close Window</Link></b>
           </div>
         </Card.Body>
     </Card> 
