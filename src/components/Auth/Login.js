@@ -5,6 +5,7 @@ import { loginUser, clearServerError } from '../../actions';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from "../../schemas/loginSchema";
+import { Link} from "react-router-dom";
 
 
 const Login = ({ 
@@ -25,7 +26,7 @@ const Login = ({
 
     if (error) {
       setErrorVisible(true);
-      reset() 
+      reset()
       clearServerError()
     }else {
       setErrorVisible(false)
@@ -33,7 +34,7 @@ const Login = ({
 
   }
 
-  const hideErrorMsg = () => {
+  const hideErrorMsg = () => {   
     return setErrorVisible(false);
   }
         return (
@@ -59,7 +60,10 @@ const Login = ({
                 </div>
                 <br></br>
 
-                <button type="submit" className="btn btn-primary btn-block">Submit</button>
+                <button type="submit" className="btn btn-primary btn-block">LOG IN</button><br></br>
+                <div>
+                  <h6 style={{color: "blue" }}><Link to="/sign-up">SIGN UP</Link></h6>
+                </div>
 
             </form>
             </div>

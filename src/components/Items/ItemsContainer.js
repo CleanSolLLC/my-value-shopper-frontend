@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import ItemInputForm from "./ItemInputForm";
 import Items from "./Items";
-import { Redirect, Link, withRouter, Switch } from "react-router-dom"
+import { withRouter } from "react-router-dom"
 
 const ItemsContainer = (props={}) => {  
   console.log(props.items)

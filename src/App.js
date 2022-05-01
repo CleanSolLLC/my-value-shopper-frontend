@@ -20,10 +20,6 @@ class App extends Component {
       })
     }
 
-    componentDidMount() {
-      {auth.isAuthenticated() ? <Redirect to="/items" /> : <Redirect to ="/" /> }
-    }
-
     render() {
       return (
         <> 

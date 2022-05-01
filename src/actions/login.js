@@ -5,6 +5,12 @@ export const errorMsg = (data=null) => {
   }
 }
 
+export const clearServerError = () => {
+  return {
+  type:  "CLEAR_ERROR_MSG"
+  }
+}
+
 export const setCurrentUser = (data=null) =>  {
   return {
     type: 'SET_CURRENT_USER',

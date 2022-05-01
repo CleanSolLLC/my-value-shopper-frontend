@@ -5,6 +5,7 @@ import { newUser, errorMsg, clearServerError } from '../../actions';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signupSchema } from "../../schemas/signupSchema";
+import { Link} from "react-router-dom";
 
 
 
@@ -77,7 +78,10 @@ const SignUp = ({
 
                 <br></br>
 
-                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                <button type="submit" className="btn btn-primary btn-block">SIGN UP</button><br></br>
+                <div>
+                  <h6 style={{color: "blue" }}><Link to="/log-in">LOG IN</Link></h6>
+                </div>
             </form>
             </div>
         );
