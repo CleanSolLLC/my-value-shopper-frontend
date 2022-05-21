@@ -5,13 +5,6 @@ export const errorMsg = (data=null) => {
   }
 }
 
-// export const createUser = (data) =>  {
-//   return {
-//     type: "CREATE_USER",
-//     user: data.user
-//   }
-// }
-
 export const setCurrentUser = (data=null) =>  {
   return {
     type: 'SET_CURRENT_USER',
@@ -21,7 +14,6 @@ export const setCurrentUser = (data=null) =>  {
 
 export const newUser = (formData) => dispatch => {
     fetch('http://localhost:3001/api/v1/users', {
-      //credentials: 'include',
       method: 'POST',
       headers:{
        'Content-type': 'application/json',

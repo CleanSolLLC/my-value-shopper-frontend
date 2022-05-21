@@ -9,7 +9,8 @@ const userReducer = (state = null, action) => {
     case "LOGOUT_USER":
       return {
         user: null,
-        items: null
+        items: null,
+        authError: null
       }
 
     case "ADD_USER_ITEM":
@@ -52,11 +53,13 @@ const userReducer = (state = null, action) => {
    
     case "CREATE_ERROR_MSG":
       return {
+        ...state,
         authError: action.payload
       }  
 
     case "CLEAR_ERROR_MSG":
       return {
+        ...state,
         authError: null
       }    
 

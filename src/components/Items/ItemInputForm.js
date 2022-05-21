@@ -26,8 +26,21 @@ const ItemInputForm = ({
   });
 
   useEffect(()=> {
+    console.log("inside useEffect dataLoading")
    dataLoading()
-  },[]);
+  },[pending]);
+
+  useEffect(()=> {
+    console.log("inside useEffect setErrorVisible")
+    if (error) {
+      setErrorVisible(true)
+      setSpinnerVisible(false)
+      reset()
+      setIsDisabled(false)
+    }
+   },[error]);
+
+
 
   const [errorVisible, setErrorVisible] = useState(false)
   const [spinnerVisible, setSpinnerVisible] = useState(false)
@@ -39,10 +52,11 @@ const ItemInputForm = ({
     e.preventDefault();
     console.log(pending)
     createUserItem(data)
-
+    
     if (error) {
       setErrorVisible(true);
-      reset() 
+      reset()
+      setSpinnerVisible(false) 
       clearServerError()
     }else {
       setErrorVisible(false)
@@ -111,7 +125,7 @@ const ItemInputForm = ({
  )
 }
 const mapStateToProps = (state) => {
-  console.log(state)
+  console.log(state.authError)
   return {
     error: state.authError,
     pending: state.pending,

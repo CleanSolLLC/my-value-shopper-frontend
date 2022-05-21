@@ -5,6 +5,12 @@ export const errorMsg = (data=null) => {
   }
 }
 
+export const clearServerError = () => {
+  return {
+  type:  "CLEAR_ERROR_MSG"
+  }
+}
+
 export const setUserItem = (data) =>  {
     return {
       type: 'SET_ITEMS',
@@ -105,8 +111,6 @@ export const dataLoadComplete = () => {
       "Content-Type": "application/json",
       Accept: "application/json",
       },
-
-      // body: JSON.stringify({user: formData})
     })
     .then(resp => resp.json())
     .then(data => {

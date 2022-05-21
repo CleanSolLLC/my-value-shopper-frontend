@@ -72,9 +72,9 @@ const Login = ({
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     error: state.authError, 
-    //items: state.user.items
   }
 }
 
